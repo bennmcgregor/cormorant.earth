@@ -1,3 +1,10 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+/* If the user is hovering over a link that contains an image, 
+   kill the popover's visibility entirely */
+body:has(a:hover img) .popover {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
