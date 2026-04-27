@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { ReactFlow, Background } from "@xyflow/react"
+import type { FullSlug } from "../../util/path"
 import {
     MapNodeContent,
     type MapDataItem,
@@ -50,12 +51,30 @@ function MapApp() {
 }
 
 let root: Root | null = null
+let isReDispatchingNav = false
 
 function mount() {
     const el = document.getElementById("map-canvas-root")
     if (!el || root) return
     root = createRoot(el)
     root.render(React.createElement(MapApp))
+
+    // After React commits the mount, fire nav so popover (and other nav-listening
+    // scripts) can re-scan the DOM and find our newly-rendered <a.internal>s.
+    // The 100ms setTimeout gives React Flow time to fully commit its DOM
+    // (including measuring nodes and creating the <a> wrappers) before popover
+    // scans for links
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            isReDispatchingNav = true
+            document.dispatchEvent(
+                new CustomEvent("nav", {
+                    detail: { url: window.location.pathname.slice(1) as FullSlug },
+                }),
+            )
+            isReDispatchingNav = false
+        }, 100)
+    })
 }
 
 function unmount() {
@@ -64,6 +83,7 @@ function unmount() {
 }
 
 document.addEventListener("nav", () => {
+    if (isReDispatchingNav) return  // skip our own synthetic dispatch
     unmount()
     mount()
 })

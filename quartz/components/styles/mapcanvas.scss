@@ -45,15 +45,3 @@ body:has(#map-canvas-root) {
     background: transparent;
     padding: 0;
 }
-
-.map-hover-panel {
-    position: fixed;
-    bottom: 24px;
-    left: 24px;
-    padding: 8px 14px;
-    background: #fff;
-    font-family: var(--bodyFont, sans-serif);
-    font-size: 14px;
-    z-index: 1000;
-    pointer-events: none;
-}
