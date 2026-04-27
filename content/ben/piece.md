@@ -3,9 +3,9 @@ title: Outfit for Ben
 publish: 'true'
 map: 'true'
 map_image: ben/ben-full-outfit.jpg
-map_x: 241
-map_y: 308
-map_z: 1
+map_x: 251
+map_y: 118
+map_z: '1'
 ---
 # Outfit for Ben
 *February—July 2025*  
