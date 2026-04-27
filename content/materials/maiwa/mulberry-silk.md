@@ -9,3 +9,8 @@ This is the 2-ply x 2-ply (classic) handwoven mulberry silk from Maiwa: https://
 "Handwoven in India by artisans in partnership with Maiwa"
 
 First purchased in August 2024.
+
+Came with this information card:
+
+![[maiwa-handwoven-back.jpg]]
+![[maiwa-handwoven-front.jpg]]
