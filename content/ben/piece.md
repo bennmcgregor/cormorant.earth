@@ -1,6 +1,10 @@
 ---
 title: Outfit for Ben
 publish: "true"
+map: "true"
+map_image: ben/ben-full-outfit.jpg
+map_x: "400"
+map_y: "-200"
 ---
 # Outfit for Ben
 *February—July 2025*  

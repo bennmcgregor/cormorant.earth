@@ -33,6 +33,15 @@ PUBLISH_FALSE_RE = PUBLISH_FALSE_RE = re.compile(r"""^\s*publish\s*:\s*["']?fals
 EMBED_RE = re.compile(r"!\[\[([^\]|#]+?)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]")
 MD_IMG_RE = re.compile(r"!\[[^\]]*\]\(([^)]+?)\)")
 
+FRONTMATTER_IMAGE_FIELDS = ("map_image",)  # extend if you add more later
+FRONTMATTER_IMAGE_REGEXES = [
+    re.compile(
+        rf'^\s*{re.escape(f)}\s*:\s*["\']?([^"\'\n]+?)["\']?\s*$',
+        re.MULTILINE,
+    )
+    for f in FRONTMATTER_IMAGE_FIELDS
+]
+
 
 def is_hidden(rel: Path) -> bool:
     return any(part.startswith(".") for part in rel.parts)
@@ -72,6 +81,14 @@ def find_attachment_refs(md_files: set[Path]) -> set[Path]:
     for md in md_files:
         text = md.read_text(encoding="utf-8", errors="ignore")
         refs = []
+
+        # Frontmatter image fields (map_image, etc.)
+        fm_match = FRONTMATTER_RE.match(text)
+        if fm_match:
+            fm_text = fm_match.group(1)
+            for fre in FRONTMATTER_IMAGE_REGEXES:
+                refs.extend(r.strip() for r in fre.findall(fm_text))
+
         for ref in EMBED_RE.findall(text):
             ref = ref.strip()
             if not ref.endswith(".md"):

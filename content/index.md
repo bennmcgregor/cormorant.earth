@@ -3,7 +3,7 @@ title: Welcome
 publish: "true"
 ---
 ![[text-logo.png]]
-[ ![[jacket-back-detail.jpg]]](cormorant.earth/ben/piece.md)
+[ ![[jacket-back-detail.jpg]]](ben/piece.md)
 
 # Where am I?
 
