@@ -10,7 +10,7 @@ import { QuartzPluginData } from "../vfile"
 
 type MapItem = {
     id: string
-    position: { x: number; y: number }
+    position: { x: number; y: number, z: number, }
     image: string
     title: string
     href: string
@@ -45,7 +45,11 @@ async function* emitMapData(
 
         items.push({
             id: slug,
-            position: { x: Number(fm.map_x ?? 0), y: Number(fm.map_y ?? 0) },
+            position: { 
+                x: Number(fm.map_x ?? 0),
+                y: Number(fm.map_y ?? 0),
+                z: Number(fm.map_z ?? 0),
+            },
             image: resolvedImage,
             title: String(fm.title ?? slug),
             href: "/" + slug,

@@ -3,7 +3,7 @@ import type { Node } from "@xyflow/react"
 
 export type MapDataItem = {
     id: string
-    position: { x: number; y: number }
+    position: { x: number; y: number, z: number, }
     image: string
     title: string
     href: string

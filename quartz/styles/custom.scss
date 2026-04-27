@@ -1,7 +1,7 @@
 @use "./base.scss";
 
 /* If the user is hovering over a link that contains an image, 
-   kill the popover's visibility entirely, except in map page */
+   kill the popover's visibility entirely, except in /map page */
 body:has(a:hover img):not(:has(#map-canvas-root)) .popover {
     display: none !important;
     opacity: 0 !important;

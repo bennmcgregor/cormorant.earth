@@ -30,7 +30,8 @@ function MapApp() {
             items.map((item) => ({
                 id: item.id,
                 type: "custom",
-                position: item.position,
+                position: { x: item.position.x, y: item.position.y },
+                zIndex: item.position.z,
                 data: { image: item.image, title: item.title, href: item.href },
             })),
             )
@@ -40,11 +41,12 @@ function MapApp() {
     return React.createElement(
         ReactFlow,
         {
-        nodes,
-        edges: [],
-        nodeTypes,
-        fitView: true,
-        proOptions: { hideAttribution: true },
+            nodes,
+            edges: [],
+            nodeTypes,
+            elevateNodesOnSelect: false,
+            defaultViewport: { x: 0, y: 0, zoom: 1 }, // always open map at (0,0)
+            proOptions: { hideAttribution: true },
         },
         React.createElement(Background, null),
     )
