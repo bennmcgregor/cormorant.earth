@@ -1,6 +1,3 @@
-import matter from "gray-matter"
-import { readFileSync } from "fs"
-import path from "path"
 import { QuartzEmitterPlugin } from "../types"
 import { write } from "./helpers"
 import { FullSlug, FilePath } from "../../util/path"
@@ -22,19 +19,12 @@ async function* emitMapData(
 ): AsyncGenerator<FilePath> {
     const items: MapItem[] = []
     for (const [, file] of content) {
-        const filePath = file.data.filePath
-        if (!filePath) continue
-
-        let fm: Record<string, unknown>
-        try {
-            fm = matter(readFileSync(filePath, "utf-8")).data
-        } catch {
-            continue
-        }
+        const fm = file.data.rawFrontmatter
+        if (!fm) continue
 
         const mapFlag = fm.map
         const isOnMap =
-        mapFlag === true || mapFlag === "true" || mapFlag === 1 || mapFlag === "1"
+            mapFlag === true || mapFlag === "true" || mapFlag === 1 || mapFlag === "1"
         if (!isOnMap) continue
 
         const image = String(fm.map_image ?? "").trim()
@@ -45,7 +35,7 @@ async function* emitMapData(
 
         items.push({
             id: slug,
-            position: { 
+            position: {
                 x: Number(fm.map_x ?? 0),
                 y: Number(fm.map_y ?? 0),
                 z: Number(fm.map_z ?? 0),

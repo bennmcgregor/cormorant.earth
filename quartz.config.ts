@@ -1,5 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { RawFrontmatter } from "./quartz/plugins/transformers/rawFrontmatter"
 import { MapData } from "./quartz/plugins/emitters/mapData"
 
 /**
@@ -76,6 +77,7 @@ const config: QuartzConfig = {
       }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
+      RawFrontmatter(),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
