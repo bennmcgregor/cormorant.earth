@@ -1,0 +1,30 @@
+$shortestSideWidth: 150px;
+
+.map-node img {
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    border-radius: 0;
+    /* Loading default — image is sized as a square while orientation isn't known yet */
+    width: $shortestSideWidth;
+    height: $shortestSideWidth;
+}
+
+.map-node img[data-orientation="landscape"] {
+    height: $shortestSideWidth;
+    width: auto;
+}
+
+.map-node img[data-orientation="portrait"] {
+    width: $shortestSideWidth;
+    height: auto;
+}
+
+/* Strip React Flow's default node wrapper chrome (rounded corners, shadow, border) */
+.react-flow__node-custom {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+}

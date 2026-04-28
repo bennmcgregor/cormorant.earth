@@ -1,5 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { MapData } from "./quartz/plugins/emitters/mapData"
 
 /**
  * Quartz 4 Configuration
@@ -94,6 +95,7 @@ const config: QuartzConfig = {
       // Comment out CustomOgImages to speed up build time
       // this doesn't work with non-google fonts
       // Plugin.CustomOgImages(),
+      MapData(),
     ],
   },
 }
