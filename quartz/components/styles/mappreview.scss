@@ -1,0 +1,13 @@
+@use "mapShared";
+@use "../../styles/variables.scss" as *;
+
+.map-preview-root {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border: 1px solid var(--lightgray);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    background: var(--light);
+}

@@ -1,6 +1,10 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { RawFrontmatter } from "./quartz/plugins/transformers/rawFrontmatter"
+import { MapPreviewTransformer } from "./quartz/plugins/transformers/mapPreview"
 import { MapData } from "./quartz/plugins/emitters/mapData"
+import { ImageOptimizer } from "./quartz/plugins/emitters/imageOptimizer"
+import { WebpImageRewrite } from "./quartz/plugins/transformers/webpImageRewrite"
 
 /**
  * Quartz 4 Configuration
@@ -68,14 +72,18 @@ const config: QuartzConfig = {
         keepBackground: false,
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      MapPreviewTransformer(),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({
         markdownLinkResolution: "shortest",
         externalLinkIcon: false,
+        lazyLoad: true,
       }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
+      RawFrontmatter(),
+      WebpImageRewrite(),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
@@ -96,6 +104,7 @@ const config: QuartzConfig = {
       // this doesn't work with non-google fonts
       // Plugin.CustomOgImages(),
       MapData(),
+      ImageOptimizer(),
     ],
   },
 }

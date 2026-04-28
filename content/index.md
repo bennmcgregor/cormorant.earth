@@ -5,7 +5,7 @@ publish: "true"
 ![[text-logo.png]]
 
 
-[ ![[jacket-back-detail.jpg]]](ben/piece.md)
+[ ![[jacket-back-detail.jpg|featured]]](ben/piece.md "Outfit for Ben")
 
 # Where am I?
 
@@ -26,6 +26,12 @@ I also share videos about this stuff on social media. Follow me there for regula
 [instagram](https://instagram.com/canarybenn)  
 [tiktok](https://tiktok.com/@canarybenn)  
 [youtube](https://youtube.com/@canarybenn)  
+
+
+[[map|Explore the project →]]
+
+> [!map]
+
 
 # About Me
 

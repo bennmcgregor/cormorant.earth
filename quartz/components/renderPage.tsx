@@ -263,16 +263,18 @@ export function renderPage(
     <html lang={lang} dir={direction}>
       <Head {...componentData} />
       <body data-slug={slug}>
+        {/* Rendered before #quartz-root so it sits above the CSS grid entirely,
+            independent of the left/center/right column layout. */}
+        <Header {...componentData}>
+          {header.map((HeaderComponent) => (
+            <HeaderComponent {...componentData} />
+          ))}
+        </Header>
         <div id="quartz-root" class="page">
           <Body {...componentData}>
             {LeftComponent}
             <div class="center">
               <div class="page-header">
-                <Header {...componentData}>
-                  {header.map((HeaderComponent) => (
-                    <HeaderComponent {...componentData} />
-                  ))}
-                </Header>
                 <div class="popover-hint">
                   {beforeBody.map((BodyComponent) => (
                     <BodyComponent {...componentData} />

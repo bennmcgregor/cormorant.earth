@@ -1,4 +1,5 @@
 @use "mapShared";
+@use "../../styles/variables.scss" as *;
 
 #map-canvas-root {
     position: fixed;
@@ -6,7 +7,7 @@
     width: 100vw;
     height: 100vh;
     background: #ffffff;
-    z-index: 100;
+    z-index: $zIndexMapCanvas;
 }
 
 body:has(#map-canvas-root) {

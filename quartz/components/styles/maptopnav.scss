@@ -1,0 +1,15 @@
+@use "../../styles/variables.scss" as *;
+
+body[data-slug="map"] header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: $zIndexMapNav;
+  pointer-events: none;
+
+  & .top-nav {
+    pointer-events: auto;
+  }
+}

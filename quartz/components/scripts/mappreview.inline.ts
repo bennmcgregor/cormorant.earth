@@ -20,23 +20,23 @@ function CustomNode({ data }: { data: MapNodeData }) {
 
 const nodeTypes = { custom: CustomNode }
 
-function MapApp() {
+function MapPreviewApp() {
     const [nodes, setNodes] = useState<MapNode[]>([])
 
     useEffect(() => {
         fetch("/mapdata.json")
-        .then((r) => r.json())
-        .then((items: MapDataItem[]) => {
-            setNodes(
-            items.map((item) => ({
-                id: item.id,
-                type: "custom",
-                position: { x: item.position.x, y: item.position.y },
-                zIndex: item.position.z,
-                data: { image: item.image, title: item.title, href: item.href },
-            })),
-            )
-        })
+            .then((r) => r.json())
+            .then((items: MapDataItem[]) => {
+                setNodes(
+                    items.map((item) => ({
+                        id: item.id,
+                        type: "custom",
+                        position: { x: item.position.x, y: item.position.y },
+                        zIndex: item.position.z,
+                        data: { image: item.image, title: item.title, href: item.href },
+                    })),
+                )
+            })
     }, [])
 
     return React.createElement(
@@ -46,28 +46,31 @@ function MapApp() {
             edges: [],
             nodeTypes,
             elevateNodesOnSelect: false,
-            defaultViewport: { x: 0, y: 0, zoom: 1 }, // always open map at (0,0)
+            fitView: true,
+            fitViewOptions: { padding: 0.1 },
+            minZoom: 0.1,
+            maxZoom: 2,
+            panOnScroll: false,
+            zoomOnScroll: true,
             proOptions: { hideAttribution: true },
         },
         React.createElement(Background, null),
-        React.createElement(MapControls, { homeAction: "reset-origin" }),
+        React.createElement(MapControls, { homeAction: "fit-view" }),
     )
 }
 
-let root: Root | null = null
+let roots: Root[] = []
 let isReDispatchingNav = false
 
 function mount() {
-    const el = document.getElementById("map-canvas-root")
-    if (!el || root) return
-    root = createRoot(el)
-    root.render(React.createElement(MapApp))
+    const els = document.querySelectorAll<HTMLElement>(".map-preview-root")
+    if (!els.length || roots.length) return
+    els.forEach((el) => {
+        const r = createRoot(el)
+        r.render(React.createElement(MapPreviewApp))
+        roots.push(r)
+    })
 
-    // After React commits the mount, fire nav so popover (and other nav-listening
-    // scripts) can re-scan the DOM and find our newly-rendered <a.internal>s.
-    // The 100ms setTimeout gives React Flow time to fully commit its DOM
-    // (including measuring nodes and creating the <a> wrappers) before popover
-    // scans for links
     requestAnimationFrame(() => {
         setTimeout(() => {
             isReDispatchingNav = true
@@ -82,12 +85,12 @@ function mount() {
 }
 
 function unmount() {
-    root?.unmount()
-    root = null
+    roots.forEach((r) => r.unmount())
+    roots = []
 }
 
 document.addEventListener("nav", () => {
-    if (isReDispatchingNav) return  // skip our own synthetic dispatch
+    if (isReDispatchingNav) return
     unmount()
     mount()
 })
