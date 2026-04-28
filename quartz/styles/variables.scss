@@ -18,6 +18,10 @@ $desktop: "(min-width: #{map.get($breakpoints, desktop)})";
 
 $pageWidth: #{map.get($breakpoints, mobile)};
 $desktopSidePanelWidth: 320px;
+
+// Z-index layers for custom components
+$zIndexMapCanvas: 100;
+$zIndexMapNav: 101; // header must clear map canvas on the map page
 $tabletSidePanelWidth: 150px;
 $topSpacing: 4rem;
 $boldWeight: 700;

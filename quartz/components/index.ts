@@ -24,6 +24,8 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import MapCanvas from "./MapCanvas"
+import TopNav from "./TopNav"
+import MapLink from "./MapLink"
 
 export {
   ArticleTitle,
@@ -51,5 +53,7 @@ export {
   Comments,
   Flex,
   ConditionalRender,
-  MapCanvas
+  MapCanvas,
+  TopNav,
+  MapLink,
 }

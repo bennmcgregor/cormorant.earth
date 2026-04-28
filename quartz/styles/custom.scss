@@ -1,6 +1,11 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-/* If the user is hovering over a link that contains an image, 
+#quartz-body article {
+  max-width: $pageWidth;
+}
+
+/* If the user is hovering over a link that contains an image,
    kill the popover's visibility entirely, except in /map page */
 body:has(a:hover img):not(:has(#map-canvas-root)) .popover {
     display: none !important;

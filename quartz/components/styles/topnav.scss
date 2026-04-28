@@ -1,0 +1,61 @@
+@use "../../styles/variables.scss" as *;
+
+header {
+  @media all and not ($desktop) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+
+  & > .top-nav-logo img {
+    height: 2.5rem;
+    width: auto;
+    display: block;
+  }
+
+  & > .search > .search-button {
+    border: none;
+    padding: 0;
+    height: auto;
+    background: transparent;
+
+    & svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: 0;
+    }
+  }
+
+  & > .top-nav-map {
+    display: flex;
+    align-items: center;
+
+    & svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      stroke: var(--darkgray);
+      stroke-width: 1.5px;
+      fill: none;
+      transition: stroke 0.2s ease;
+    }
+
+    &:hover svg {
+      stroke: var(--secondary);
+    }
+  }
+}
+
+body[data-slug="map"] header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: $zIndexMapNav;
+}
