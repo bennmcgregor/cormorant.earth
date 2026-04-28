@@ -9,3 +9,7 @@ I bought this sukumo dye on a whim without really knowing what I was getting mys
 https://aikuma-japan.com/products/sukumo-indigo
 
 First bought: March 2026.
+
+It came with this note and translation:
+
+![[sukumo-note.jpeg]]
