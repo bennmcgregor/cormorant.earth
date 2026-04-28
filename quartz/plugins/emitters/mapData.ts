@@ -13,6 +13,12 @@ type MapItem = {
     href: string
 }
 
+function toWebpIfPossible(url: string): string {
+    return /\.(jpe?g|png)$/i.test(url)
+        ? url.replace(/\.(jpe?g|png)$/i, ".webp")
+        : url
+}
+
 async function* emitMapData(
     ctx: BuildCtx,
     content: [UnistNode, { data: QuartzPluginData }][],
@@ -40,7 +46,7 @@ async function* emitMapData(
                 y: Number(fm.map_y ?? 0),
                 z: Number(fm.map_z ?? 0),
             },
-            image: resolvedImage,
+            image: toWebpIfPossible(resolvedImage),
             title: String(fm.title ?? slug),
             href: "/" + slug,
         })
