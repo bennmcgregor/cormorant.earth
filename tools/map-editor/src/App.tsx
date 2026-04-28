@@ -22,6 +22,11 @@ const nodeTypes = { custom: CustomNode }
 
 export default function App() {
     const [nodes, setNodes] = useState<MapNode[]>([])
+    const [defaultViewport] = useState(() => ({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        zoom: 1,
+    }))
 
     useEffect(() => {
         fetch("/api/map")
@@ -59,7 +64,7 @@ export default function App() {
             onNodesChange={onNodesChange}
             onNodeDragStop={onNodeDragStop}
             autoPanOnNodeDrag={false}
-            defaultViewport={{ x: 0, y: 0, zoom: 1 }}
+            defaultViewport={defaultViewport}
             proOptions={{ hideAttribution: true }}
             elevateNodesOnSelect={false}
         >

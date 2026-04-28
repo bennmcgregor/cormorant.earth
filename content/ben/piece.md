@@ -3,8 +3,8 @@ title: Outfit for Ben
 publish: 'true'
 map: 'true'
 map_image: ben/ben-full-outfit.jpg
-map_x: 877
-map_y: 242
+map_x: 147
+map_y: 17
 map_z: '1'
 ---
 # Outfit for Ben
