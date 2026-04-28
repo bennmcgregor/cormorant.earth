@@ -22,6 +22,11 @@ const nodeTypes = { custom: CustomNode }
 
 function MapApp() {
     const [nodes, setNodes] = useState<MapNode[]>([])
+    const [defaultViewport] = useState(() => ({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        zoom: 1,
+    }))
 
     useEffect(() => {
         fetch("/mapdata.json")
@@ -46,7 +51,7 @@ function MapApp() {
             edges: [],
             nodeTypes,
             elevateNodesOnSelect: false,
-            defaultViewport: { x: 0, y: 0, zoom: 1 }, // always open map at (0,0)
+            defaultViewport,
             proOptions: { hideAttribution: true },
         },
         React.createElement(Background, null),

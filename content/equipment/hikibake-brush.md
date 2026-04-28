@@ -3,8 +3,8 @@ title: Hikibake brush for hikizome
 publish: 'true'
 map: 'true'
 map_image: /equipment/hikibake-brushes.jpg
-map_x: 694
-map_y: 455
+map_x: -362
+map_y: -42
 ---
 # Hikibake brush for hikizome
 

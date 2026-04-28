@@ -11,43 +11,48 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
   flex: 1;
 
-  & > .top-nav-logo img {
-    height: 2.5rem;
-    width: auto;
-    display: block;
-  }
-
-  & > .search > .search-button {
-    border: none;
-    padding: 0;
-    height: auto;
-    background: transparent;
-
-    & svg {
-      width: 1.2rem;
-      height: 1.2rem;
-      margin: 0;
-    }
-  }
-
-  & > .top-nav-map {
+  & > .top-nav-left {
     display: flex;
     align-items: center;
+    gap: 1.5rem;
 
-    & svg {
-      width: 1.2rem;
-      height: 1.2rem;
-      stroke: var(--darkgray);
-      stroke-width: 1.5px;
-      fill: none;
-      transition: stroke 0.2s ease;
+    & > .top-nav-logo img {
+      height: 2.5rem;
+      width: auto;
+      display: block;
     }
 
-    &:hover svg {
-      stroke: var(--secondary);
+    & > .search > .search-button {
+      border: none;
+      padding: 0;
+      height: auto;
+      background: transparent;
+
+      & svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin: 0;
+      }
+    }
+
+    & > .top-nav-map {
+      display: flex;
+      align-items: center;
+
+      & svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        stroke: var(--darkgray);
+        stroke-width: 1.5px;
+        fill: none;
+        transition: stroke 0.2s ease;
+      }
+
+      &:hover svg {
+        stroke: var(--secondary);
+      }
     }
   }
 

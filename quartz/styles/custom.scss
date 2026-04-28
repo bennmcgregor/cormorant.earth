@@ -5,10 +5,6 @@
   max-width: $pageWidth;
 }
 
-// body[data-slug="index"] header .top-nav-logo {
-//   visibility: hidden;
-// }
-
 /* If the user is hovering over a link that contains an image,
    kill the popover's visibility entirely, except in /map page */
 body:has(a:hover img):not(:has(#map-canvas-root)) .popover {
@@ -68,7 +64,7 @@ body[data-slug="index"] a:has(> img[alt="featured"]) {
     }
 
     &::after {
-      content: attr(title);
+      content: attr(title) "  \2192";
       top: unset;
       right: unset;
       bottom: 1.25rem;
