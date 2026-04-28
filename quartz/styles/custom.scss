@@ -7,9 +7,77 @@
 
 /* If the user is hovering over a link that contains an image,
    kill the popover's visibility entirely, except in /map page */
+body[data-slug="index"] header {
+  display: none;
+}
+
 body:has(a:hover img):not(:has(#map-canvas-root)) .popover {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+}
+
+body[data-slug="index"] a:has(> img[alt="featured"]) {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+
+  &::after {
+    content: "Learn more \2192";
+    position: absolute;
+    top: -0.65rem;
+    right: 0rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: black;
+    font-weight: 400;
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  & > img {
+    display: block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0);
+    transition: box-shadow 0.3s ease;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+
+    & > img {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.546);
+    }
+  }
+
+  @media all and ($mobile) {
+    
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      height: 2.5rem;
+      background: linear-gradient(to top, black, transparent);
+      border-radius: 0 0 5px 5px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &::after {
+      content: attr(title);
+      top: unset;
+      right: unset;
+      bottom: 1.25rem;
+      left: 0.5rem;
+      opacity: 1;
+      color: white;
+      text-shadow: none;
+      font-size: 1rem;
+      z-index: 2;
+    }
+  }
 }

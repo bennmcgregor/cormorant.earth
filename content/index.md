@@ -5,7 +5,7 @@ publish: "true"
 ![[text-logo.png]]
 
 
-[ ![[jacket-back-detail.jpg]]](ben/piece.md)
+[ ![[jacket-back-detail.jpg|featured]]](ben/piece.md "Outfit for Ben")
 
 # Where am I?
 

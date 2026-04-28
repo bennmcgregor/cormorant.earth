@@ -530,11 +530,33 @@ async function fillDocument(data: ContentIndex) {
   indexPopulated = true
 }
 
+let lastNavUrl: string | undefined
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
+  // Skip re-dispatched nav events for the same URL (e.g. MapCanvas fires a
+  // synthetic nav after mounting so popovers re-scan links — search doesn't
+  // need to re-initialise for that).
+  if (currentSlug === lastNavUrl) return
+  lastNavUrl = currentSlug
+
   const data = await fetchData
-  const searchElement = document.getElementsByClassName("search")
-  for (const element of searchElement) {
-    await setupSearch(element, currentSlug, data)
+  const searchElements = [...document.getElementsByClassName("search")]
+
+  if (searchElements.length === 0) return
+
+  // The last element in document order is the primary (afterBody follows header).
+  // Only it gets a full setup — one overlay, one Ctrl+K handler.
+  // Earlier instances have their buttons delegate to the primary button instead.
+  const primary = searchElements[searchElements.length - 1]
+  await setupSearch(primary, currentSlug, data)
+
+  const primaryBtn = primary.querySelector<HTMLButtonElement>(".search-button")
+  for (let i = 0; i < searchElements.length - 1; i++) {
+    const btn = searchElements[i].querySelector<HTMLButtonElement>(".search-button")
+    if (btn && primaryBtn) {
+      const delegate = () => primaryBtn.click()
+      btn.addEventListener("click", delegate)
+      window.addCleanup(() => btn.removeEventListener("click", delegate))
+    }
   }
 })
