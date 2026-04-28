@@ -9,7 +9,7 @@ body[data-slug="map"] header {
   z-index: $zIndexMapNav;
   pointer-events: none;
 
-  & .top-nav {
+  a, button, input {
     pointer-events: auto;
   }
 }

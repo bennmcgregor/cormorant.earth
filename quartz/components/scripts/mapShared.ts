@@ -31,9 +31,14 @@ const homeIcon = React.createElement("svg",
  *  "reset-origin" snaps the viewport to (0,0); "fit-view" fits all nodes. */
 export function MapControls({ homeAction }: { homeAction: "reset-origin" | "fit-view" }) {
     const { setViewport, zoomIn, zoomOut, fitView } = useReactFlow()
+    const [defaultViewport] = useState(() => ({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        zoom: 1,
+    }))
 
     const handleHome = homeAction === "reset-origin"
-        ? () => setViewport({ x: 0, y: 0, zoom: 1 }, { duration: 600 })
+        ? () => setViewport(defaultViewport, { duration: 600 })
         : () => fitView({ duration: 600, padding: 0.1 })
 
     return React.createElement(
