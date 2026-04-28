@@ -1,6 +1,8 @@
 ---
 title: Hikibake brush for hikizome
 publish: "true"
+map: "true"
+map_image: /equipment/hikibake-brushes.jpg
 ---
 # Hikibake brush for hikizome
 

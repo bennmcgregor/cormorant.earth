@@ -74,6 +74,7 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({
         markdownLinkResolution: "shortest",
         externalLinkIcon: false,
+        lazyLoad: true,
       }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
