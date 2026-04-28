@@ -7,6 +7,7 @@ import searchStyle from "./styles/search.scss"
 import searchScript from "./scripts/search.inline"
 
 const TopNav: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
+  if (fileData.slug === "map") return null
   const baseDir = pathToRoot(fileData.slug!)
   const searchPlaceholder = i18n(cfg.locale).components.search.searchBarPlaceholder
   return (
@@ -45,6 +46,26 @@ const TopNav: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
           <line x1="16" y1="6" x2="16" y2="22" />
         </svg>
       </a>
+      <div class="social-icons">
+        <a href="https://instagram.com/canarybenn" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="5" />
+            <circle cx="17.5" cy="6.5" r="1.5" />
+          </svg>
+        </a>
+        <a href="https://tiktok.com/@canarybenn" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+          </svg>
+        </a>
+        <a href="https://youtube.com/@canarybenn" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98" />
+          </svg>
+        </a>
+      </div>
     </div>
   )
 }

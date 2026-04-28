@@ -1,6 +1,7 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 import { RawFrontmatter } from "./quartz/plugins/transformers/rawFrontmatter"
+import { MapPreviewTransformer } from "./quartz/plugins/transformers/mapPreview"
 import { MapData } from "./quartz/plugins/emitters/mapData"
 import { ImageOptimizer } from "./quartz/plugins/emitters/imageOptimizer"
 import { WebpImageRewrite } from "./quartz/plugins/transformers/webpImageRewrite"
@@ -71,6 +72,7 @@ const config: QuartzConfig = {
         keepBackground: false,
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      MapPreviewTransformer(),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({

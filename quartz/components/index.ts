@@ -24,7 +24,9 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import MapCanvas from "./MapCanvas"
+import MapPreview from "./MapPreview"
 import TopNav from "./TopNav"
+import MapTopNav from "./MapTopNav"
 import MapLink from "./MapLink"
 
 export {
@@ -54,6 +56,8 @@ export {
   Flex,
   ConditionalRender,
   MapCanvas,
+  MapPreview,
   TopNav,
+  MapTopNav,
   MapLink,
 }

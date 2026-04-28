@@ -12,6 +12,7 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 1.5rem;
+  flex: 1;
 
   & > .top-nav-logo img {
     height: 2.5rem;
@@ -49,13 +50,29 @@ header {
       stroke: var(--secondary);
     }
   }
-}
 
-body[data-slug="map"] header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  z-index: $zIndexMapNav;
+  & > .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: auto;
+
+    & a {
+      display: flex;
+      align-items: center;
+
+      & svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        stroke: var(--darkgray);
+        stroke-width: 1.5px;
+        fill: none;
+        transition: stroke 0.2s ease;
+      }
+
+      &:hover svg {
+        stroke: var(--secondary);
+      }
+    }
+  }
 }

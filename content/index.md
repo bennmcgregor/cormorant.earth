@@ -27,6 +27,12 @@ I also share videos about this stuff on social media. Follow me there for regula
 [tiktok](https://tiktok.com/@canarybenn)  
 [youtube](https://youtube.com/@canarybenn)  
 
+
+[[map|Explore the project →]]
+
+> [!map]
+
+
 # About Me
 
 I'm Benn. I love designing and making things. Connect with me! Let's create together.
