@@ -1,6 +1,7 @@
 ---
 title: Welcome
 publish: "true"
+description: "Welcome! You're in the home of Cormorant, a research and design project that started with the question: How do we stop overconsumption?"
 ---
 ![[text-logo.png]]
 
