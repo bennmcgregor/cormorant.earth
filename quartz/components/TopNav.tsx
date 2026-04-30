@@ -5,16 +5,23 @@ import style from "./styles/topnav.scss"
 import searchStyle from "./styles/search.scss"
 // @ts-ignore
 import searchScript from "./scripts/search.inline"
+import { getStaticImageDims } from "../util/staticImageDims"
 
 const TopNav: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
   if (fileData.slug === "map") return null
   const baseDir = pathToRoot(fileData.slug!)
   const searchPlaceholder = i18n(cfg.locale).components.search.searchBarPlaceholder
+  const logoDims = getStaticImageDims("static/text-logo.png")
   return (
     <div class="top-nav">
       <div class="top-nav-left">
         <a href={baseDir} class="top-nav-logo">
-          <img src={`${baseDir}/static/text-logo.png`} alt="Home" />
+          <img
+            src={`${baseDir}/static/text-logo.png`}
+            alt="Home"
+            width={logoDims.width || undefined}
+            height={logoDims.height || undefined}
+          />
         </a>
         <div class="search">
           <button class="search-button" aria-label={i18n(cfg.locale).components.search.title}>

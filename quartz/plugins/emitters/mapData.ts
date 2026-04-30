@@ -7,14 +7,20 @@ import { FullSlug, FilePath } from "../../util/path"
 import { BuildCtx } from "../../util/ctx"
 import { Node as UnistNode } from "unist"
 import { QuartzPluginData } from "../vfile"
+import { imageSize } from "image-size"
+import { readFileSync } from "fs"
+import { MAP_TILE_MAX_WIDTH } from "../../util/imageSizes"
 
 type MapItem = {
     id: string
     position: { x: number; y: number; z: number }
     image: string
+    width: number
+    height: number
     title: string
     href: string
 }
+
 
 function toMapWebp(url: string): string {
     if (/\.(jpe?g|png)$/i.test(url)) {
@@ -22,6 +28,27 @@ function toMapWebp(url: string): string {
     }
     // Animated .webp passes through unchanged (Tier 5 will handle).
     return url
+}
+
+function computeMapTileDims(
+    contentDir: string,
+    mapImageRel: string,
+): { width: number; height: number } {
+    const fullPath = path.join(contentDir, mapImageRel)
+    try {
+        const { width, height } = imageSize(readFileSync(fullPath))
+        if (!width || !height) return { width: 0, height: 0 }
+        // Mirror the resize math used by imageOptimizer for the .map.webp variant.
+        if (width > MAP_TILE_MAX_WIDTH) {
+            return {
+                width: MAP_TILE_MAX_WIDTH,
+                height: Math.round((height * MAP_TILE_MAX_WIDTH) / width),
+            }
+        }
+        return { width, height }
+    } catch {
+        return { width: 0, height: 0 }
+    }
 }
 
 // ---- Strict frontmatter validation ----
@@ -102,6 +129,7 @@ async function* emitMapData(
         const image = readMapImagePath(fm, slug, contentDir)
         if (!image) continue
 
+        const dims = computeMapTileDims(contentDir, image)
         items.push({
             id: slug,
             position: {
@@ -110,6 +138,8 @@ async function* emitMapData(
                 z: readIntField(fm, "map_z", slug),
             },
             image: toMapWebp("/" + image),
+            width: dims.width,
+            height: dims.height,
             title: typeof fm.title === "string" ? fm.title : slug,
             href: "/" + slug,
         })
