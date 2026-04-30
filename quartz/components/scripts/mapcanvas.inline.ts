@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { ReactFlow, Background } from "@xyflow/react"
 import type { FullSlug } from "../../util/path"
+import { MAP_MAX_ZOOM } from "../../util/imageSizes"
 import {
     MapControls,
     MapNodeContent,
@@ -38,7 +39,13 @@ function MapApp() {
                 type: "custom",
                 position: { x: item.position.x, y: item.position.y },
                 zIndex: item.position.z,
-                data: { image: item.image, title: item.title, href: item.href },
+                data: { 
+                    image: item.image,
+                    title: item.title,
+                    href: item.href,
+                    width: item.width,
+                    height: item.height,
+                },
             })),
             )
         })
@@ -53,6 +60,7 @@ function MapApp() {
             elevateNodesOnSelect: false,
             defaultViewport,
             proOptions: { hideAttribution: true },
+            maxZoom: MAP_MAX_ZOOM,
         },
         React.createElement(Background, null),
         React.createElement(MapControls, { homeAction: "reset-origin" }),

@@ -1,6 +1,6 @@
 ---
 title: Aikuma Senryo's sukumo indigo dye
-publish: "true"
+publish: true
 ---
 # Aikuma Senryo's sukumo indigo dye
 

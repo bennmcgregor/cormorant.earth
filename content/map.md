@@ -1,4 +1,4 @@
 ---
 title: Map
-publish: "true"
+publish: true
 ---

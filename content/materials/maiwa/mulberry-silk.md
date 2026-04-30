@@ -1,6 +1,6 @@
 ---
 title: Maiwa's mulberry silk
-publish: "true"
+publish: true
 ---
 # Maiwa's mulberry silk
 

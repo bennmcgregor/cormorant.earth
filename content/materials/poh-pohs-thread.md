@@ -1,6 +1,6 @@
 ---
 title: Poh Poh's Old Thread
-publish: "true"
+publish: true
 ---
 # Poh Poh's old thread
 

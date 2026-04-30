@@ -1,6 +1,6 @@
 ---
 title: Maiwa's cotton thread
-publish: "true"
+publish: true
 ---
 # Maiwa's cotton thread
 

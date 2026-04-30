@@ -5,11 +5,19 @@ export type MapDataItem = {
     id: string
     position: { x: number; y: number, z: number, }
     image: string
+    width: number
+    height: number
     title: string
     href: string
 }
 
-export type MapNodeData = { image: string; title: string; href: string }
+export type MapNodeData = { 
+    image: string
+    width: number
+    height: number
+    title: string
+    href: string
+}
 export type MapNode = Node<MapNodeData, "custom">
 
 const zoomInIcon = React.createElement("svg",
@@ -62,6 +70,8 @@ export function MapNodeContent({ data }: { data: MapNodeData }) {
         React.createElement("img", {
             src: data.image,
             alt: data.title,
+            width: data.width || undefined,
+            height: data.height || undefined,
             draggable: false,
             "data-orientation": orientation,
             onLoad: (e: SyntheticEvent<HTMLImageElement>) => {

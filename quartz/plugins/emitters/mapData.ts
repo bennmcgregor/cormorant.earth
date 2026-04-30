@@ -1,53 +1,146 @@
+import sharp from "sharp"
+import path from "path"
+import { promises as fsp, statSync } from "fs"
 import { QuartzEmitterPlugin } from "../types"
 import { write } from "./helpers"
 import { FullSlug, FilePath } from "../../util/path"
 import { BuildCtx } from "../../util/ctx"
 import { Node as UnistNode } from "unist"
 import { QuartzPluginData } from "../vfile"
+import { imageSize } from "image-size"
+import { readFileSync } from "fs"
+import { MAP_TILE_MAX_WIDTH } from "../../util/imageSizes"
 
 type MapItem = {
     id: string
-    position: { x: number; y: number, z: number, }
+    position: { x: number; y: number; z: number }
     image: string
+    width: number
+    height: number
     title: string
     href: string
 }
 
-function toWebpIfPossible(url: string): string {
-    return /\.(jpe?g|png)$/i.test(url)
-        ? url.replace(/\.(jpe?g|png)$/i, ".webp")
-        : url
+
+function toMapWebp(url: string): string {
+    if (/\.(jpe?g|png)$/i.test(url)) {
+        return url.replace(/\.(jpe?g|png)$/i, ".map.webp")
+    }
+    // Animated .webp passes through unchanged (Tier 5 will handle).
+    return url
+}
+
+function computeMapTileDims(
+    contentDir: string,
+    mapImageRel: string,
+): { width: number; height: number } {
+    const fullPath = path.join(contentDir, mapImageRel)
+    try {
+        const { width, height } = imageSize(readFileSync(fullPath))
+        if (!width || !height) return { width: 0, height: 0 }
+        // Mirror the resize math used by imageOptimizer for the .map.webp variant.
+        if (width > MAP_TILE_MAX_WIDTH) {
+            return {
+                width: MAP_TILE_MAX_WIDTH,
+                height: Math.round((height * MAP_TILE_MAX_WIDTH) / width),
+            }
+        }
+        return { width, height }
+    } catch {
+        return { width: 0, height: 0 }
+    }
+}
+
+// ---- Strict frontmatter validation ----
+
+function fail(slug: string, msg: string): never {
+    throw new Error(`[mapData] ${slug}: ${msg}`)
+}
+
+function readBoolField(fm: any, key: string, slug: string): boolean {
+    const v = fm[key]
+    if (v === undefined || v === null) return false
+    if (typeof v !== "boolean") {
+        fail(
+            slug,
+            `'${key}' must be a boolean (got ${typeof v}: ${JSON.stringify(v)}). ` +
+                `In Obsidian, set the property type to Checkbox.`,
+        )
+    }
+    return v
+}
+
+function readIntField(fm: any, key: string, slug: string): number {
+    const v = fm[key]
+    if (v === undefined || v === null) return 0
+    if (typeof v !== "number" || !Number.isInteger(v)) {
+        fail(
+            slug,
+            `'${key}' must be an integer (got ${typeof v}: ${JSON.stringify(v)}). ` +
+                `In Obsidian, set the property type to Number.`,
+        )
+    }
+    return v
+}
+
+function readMapImagePath(fm: any, slug: string, contentDir: string): string | null {
+    const v = fm.map_image
+    if (v === undefined || v === null) return null
+    if (typeof v !== "string") {
+        fail(slug, `'map_image' must be a string (got ${typeof v})`)
+    }
+    let trimmed = v.trim()
+    if (!trimmed) return null
+    if (trimmed.startsWith("./")) {
+        fail(
+            slug,
+            `'map_image' must NOT be page-relative (got '${trimmed}'). ` +
+                `Use vault-root-relative, e.g. 'materials/foo/bar.jpg'.`,
+        )
+    }
+    // Tolerate leading slash; normalize to no-slash form.
+    trimmed = trimmed.replace(/^\/+/, "")
+
+    // Existence check — catches typos and wrong paths.
+    const fullPath = path.join(contentDir, trimmed)
+    try {
+        if (!statSync(fullPath).isFile()) {
+            fail(slug, `'map_image' must point to a file (got '${trimmed}', which is not a file)`)
+        }
+    } catch {
+        fail(slug, `'map_image' (${trimmed}) does not exist in content/. Check the path.`)
+    }
+    return trimmed
 }
 
 async function* emitMapData(
     ctx: BuildCtx,
     content: [UnistNode, { data: QuartzPluginData }][],
 ): AsyncGenerator<FilePath> {
+    const contentDir = ctx.argv.directory
     const items: MapItem[] = []
     for (const [, file] of content) {
-        const fm = file.data.rawFrontmatter
+        const fm = (file as any).data?.rawFrontmatter
         if (!fm) continue
+        const slug = (file as any).data.slug as string
 
-        const mapFlag = fm.map
-        const isOnMap =
-            mapFlag === true || mapFlag === "true" || mapFlag === 1 || mapFlag === "1"
-        if (!isOnMap) continue
+        if (!readBoolField(fm, "map", slug)) continue
 
-        const image = String(fm.map_image ?? "").trim()
+        const image = readMapImagePath(fm, slug, contentDir)
         if (!image) continue
 
-        const slug = file.data.slug!
-        const resolvedImage = image.startsWith("/") ? image : "/" + image
-
+        const dims = computeMapTileDims(contentDir, image)
         items.push({
             id: slug,
             position: {
-                x: Number(fm.map_x ?? 0),
-                y: Number(fm.map_y ?? 0),
-                z: Number(fm.map_z ?? 0),
+                x: readIntField(fm, "map_x", slug),
+                y: readIntField(fm, "map_y", slug),
+                z: readIntField(fm, "map_z", slug),
             },
-            image: toWebpIfPossible(resolvedImage),
-            title: String(fm.title ?? slug),
+            image: toMapWebp("/" + image),
+            width: dims.width,
+            height: dims.height,
+            title: typeof fm.title === "string" ? fm.title : slug,
             href: "/" + slug,
         })
     }

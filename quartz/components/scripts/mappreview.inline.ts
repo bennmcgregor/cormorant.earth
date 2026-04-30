@@ -33,7 +33,13 @@ function MapPreviewApp() {
                         type: "custom",
                         position: { x: item.position.x, y: item.position.y },
                         zIndex: item.position.z,
-                        data: { image: item.image, title: item.title, href: item.href },
+                        data: { 
+                            image: item.image,
+                            title: item.title,
+                            href: item.href,
+                            width: item.width,
+                            height: item.height,
+                        },
                     })),
                 )
             })

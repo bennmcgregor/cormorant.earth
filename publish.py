@@ -32,6 +32,9 @@ FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 PUBLISH_TRUE_RE = PUBLISH_TRUE_RE = re.compile(r"""^\s*publish\s*:\s*["']?true["']?\s*$""", re.MULTILINE | re.IGNORECASE)
 EMBED_RE = re.compile(r"!\[\[([^\]|#]+?)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]")
 MD_IMG_RE = re.compile(r"!\[[^\]]*\]\(([^)]+?)\)")
+WIKILINK_IMG_RE = re.compile(r"!\[\[([^\]]+?)\]\]")
+HTML_IMG_ALT_RE = re.compile(r'<img[^>]*\salt\s*=\s*["\']([^"\']*)["\']', re.IGNORECASE)
+IMG_EXT_RE = re.compile(r"\.(jpe?g|png|gif|webp|svg|mp4|mov)$", re.IGNORECASE)
 
 FRONTMATTER_IMAGE_FIELDS = ("map_image",)  # extend if you add more later
 FRONTMATTER_IMAGE_REGEXES = [
@@ -103,6 +106,48 @@ def find_attachment_refs(md_files: set[Path]) -> set[Path]:
                 found.add(hit)
     return found
 
+def warn_missing_eager(md_files: set[Path]) -> None:
+    """Non-blocking warning: published notes with body images but no `eager`
+    alt-token are unlikely to have a marked LCP candidate."""
+    warnings: list[Path] = []
+    for md in md_files:
+        text = md.read_text(encoding="utf-8", errors="ignore")
+        body = FRONTMATTER_RE.sub("", text, count=1)
+
+        has_image = False
+        has_eager = False
+
+        for target in WIKILINK_IMG_RE.findall(body):
+            if not IMG_EXT_RE.search(target.split("|", 1)[0]):
+                continue
+            has_image = True
+            alias = target.split("|", 1)[1] if "|" in target else ""
+            if "eager" in alias.split():
+                has_eager = True
+
+        for m in MD_IMG_RE.finditer(body):
+            url = m.group(1).strip()
+            if url.startswith(("http://", "https://", "data:")):
+                continue
+            has_image = True
+            # Markdown image alt is between [ and ]; re-extract:
+            full = re.match(r"!\[([^\]]*)\]", body[m.start():])
+            if full and "eager" in full.group(1).split():
+                has_eager = True
+
+        for alt in HTML_IMG_ALT_RE.findall(body):
+            has_image = True
+            if "eager" in alt.split():
+                has_eager = True
+
+        if has_image and not has_eager:
+            warnings.append(md)
+
+    if warnings:
+        print(f"\n!!! {len(warnings)} note(s) have images but no |eager token (LCP candidate not marked):")
+        for md in sorted(warnings):
+            print(f"  - {md.relative_to(VAULT_PUBLISH_DIR)}")
+        print("    Add |eager to the LCP image's wikilink alias to opt into eager-loading.")
 
 def main() -> int:
     dry = "--dry-run" in sys.argv
@@ -132,6 +177,8 @@ def main() -> int:
         print()
     else:
         print("All notes marked publish: true in publish folder.")
+
+    warn_missing_eager(published_md)
 
     # Confirmation gate: only fires when there are exclusions to review
     if excluded and not dry and not yes:

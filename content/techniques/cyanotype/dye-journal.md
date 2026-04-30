@@ -1,6 +1,6 @@
 ---
 title: Cyanotype dye journal
-publish: "true"
+publish: true
 ---
 # Cyanotype Dye Journal
 ## Future improvements to try

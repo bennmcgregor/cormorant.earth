@@ -1,6 +1,6 @@
 ---
 title: Outfit for myself
-publish: "true"
+publish: true
 ---
 # Outfit for myself
 *August—November 2025*  
@@ -29,7 +29,7 @@ TODO:  make a section about zero-waste pattern cutting and my explorations in it
 
 TODO: add photo of the zero-waste pants pattern in my notebook
 
-I also made a major, irreversible mistake whose effects only appeared once I had finished the video: I used far too high a concentration of iron to turn the kakishibu from orange to grey. I used around 5% WOF for both the silk top and cotton-linen pants, rather than the maximum recommended concentration of 2% (still quite high, honestly) for cellulose fibers, and even lower concentration for silk fibers (which should ideally not be exposed to iron at all). The iron weakened the fibers, with the pants wearing out extremely fast. I have had to mend them (crotch blowouts, split pant seams, holes) at least 4 times in their 5 months of life at the time of writing. I barely wear the top as I know it will tear, the silk having been significantly weakened, with even minor stress.
+I also made a major, irreversible mistake whose effects only appeared once I had finished the video: I used far too high a concentration of iron to turn the kakishibu from orange to grey. I used around 5% WOF for both the silk top and cotton-linen pants, rather than the maximum recommended concentration of 2% (still quite high, honestly) for cellulose fibers, and even lower concentration for silk fibers (which should ideally not be exposed to iron at all). The iron weakened the fibers, with the pants wearing out extremely fast. I have had to mend them (crotch blowouts, split pant seams, holes) at least 4 times in their 5 months of life at the time of writing. I barely wear the top as I know it will tear with even minor stress, the silk having been significantly weakened.
 
 TODO: a photo of the latest torn back seam on the pants
 

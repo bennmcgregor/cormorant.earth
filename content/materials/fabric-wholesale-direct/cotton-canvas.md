@@ -1,6 +1,6 @@
 ---
 title: Fabric Wholesale Direct's cotton canvas
-publish: "true"
+publish: true
 ---
 # Fabric Wholesale Direct's cotton canvas
 

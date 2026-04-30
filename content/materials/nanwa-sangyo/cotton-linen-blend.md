@@ -1,6 +1,6 @@
 ---
 title: Nanwa Sangyo's cotton-linen blend
-publish: "true"
+publish: true
 ---
 # Nanwa Sangyo's cotton-linen blend
 
