@@ -17,6 +17,7 @@ export type MapNodeData = {
     height: number
     title: string
     href: string
+    eager?: boolean
 }
 export type MapNode = Node<MapNodeData, "custom">
 
@@ -72,6 +73,7 @@ export function MapNodeContent({ data }: { data: MapNodeData }) {
             alt: data.title,
             width: data.width || undefined,
             height: data.height || undefined,
+            fetchPriority: data.eager ? "high" : undefined,
             draggable: false,
             "data-orientation": orientation,
             onLoad: (e: SyntheticEvent<HTMLImageElement>) => {
