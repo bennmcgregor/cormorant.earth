@@ -1,6 +1,6 @@
 ---
 title: Kakishibu dye
-publish: "true"
+publish: true
 ---
 # Kakishibu dye
 

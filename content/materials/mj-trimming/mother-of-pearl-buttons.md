@@ -1,6 +1,6 @@
 ---
 title: Mother of pearl buttons on clearance
-publish: "true"
+publish: true
 ---
 # Mother of pearl buttons on clearance
 

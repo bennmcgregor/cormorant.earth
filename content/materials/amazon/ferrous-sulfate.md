@@ -1,6 +1,6 @@
 ---
 title: Ferrous Sulfate
-publish: "true"
+publish: true
 ---
 # Ferrous sulfate
 

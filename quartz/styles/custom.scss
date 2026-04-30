@@ -14,7 +14,7 @@ body:has(a:hover img):not(:has(#map-canvas-root)) .popover {
     pointer-events: none !important;
 }
 
-body[data-slug="index"] a:has(> img[alt="featured"]) {
+body[data-slug="index"] a:has(> img[alt~="featured"]) {
   position: relative;
   display: inline-block;
   isolation: isolate;
@@ -76,4 +76,10 @@ body[data-slug="index"] a:has(> img[alt="featured"]) {
       z-index: 2;
     }
   }
+}
+
+article img,
+.popover img {
+    max-width: 100%;
+    height: auto;
 }

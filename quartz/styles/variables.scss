@@ -19,6 +19,10 @@ $desktop: "(min-width: #{map.get($breakpoints, desktop)})";
 $pageWidth: #{map.get($breakpoints, mobile)};
 $desktopSidePanelWidth: 320px;
 
+// Map tile display width at zoom = 1.
+// Mirror of MAP_TILE_DISPLAY_WIDTH in imageSizes.ts.
+$mapTileDisplayWidth: 150px;
+
 // Z-index layers for custom components
 $zIndexMapCanvas: 100;
 $zIndexMapNav: 101; // header must clear map canvas on the map page

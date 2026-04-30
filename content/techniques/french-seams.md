@@ -1,6 +1,6 @@
 ---
 title: Thoughts on French seams
-publish: "true"
+publish: true
 ---
 # Thoughts on French seams
 

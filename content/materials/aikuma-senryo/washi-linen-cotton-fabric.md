@@ -1,6 +1,6 @@
 ---
 title: Aikuma Senryo's washi-linen-cotton fabric
-publish: "true"
+publish: true
 ---
 # Aikuma Senryo's washi-linen-cotton fabric
 

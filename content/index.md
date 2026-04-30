@@ -1,12 +1,12 @@
 ---
 title: Welcome
-publish: "true"
+publish: true
 description: "Welcome! You're in the home of Cormorant, a research and design project that started with the question: How do we stop overconsumption?"
 ---
-![[text-logo.png]]
+![[text-logo.png|eager]]
 
 
-[ ![[jacket-back-detail.jpg|featured]]](ben/piece.md "Outfit for Ben")
+[ ![[jacket-back-detail.jpg|featured eager]]](ben/piece.md "Outfit for Ben")
 
 # Where am I?
 
@@ -29,7 +29,7 @@ I also share videos about this stuff on social media. Follow me there for regula
 [youtube](https://youtube.com/@canarybenn)  
 
 
-[[map|Explore the project →]]
+[[map|Explore the map →]]
 
 > [!map]
 

@@ -1,6 +1,6 @@
 ---
 title: Cyanotype ingredients
-publish: "true"
+publish: true
 ---
 # Cyanotype ingredients
 

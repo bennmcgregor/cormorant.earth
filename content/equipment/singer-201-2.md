@@ -1,6 +1,6 @@
 ---
 title: My Singer 201-2 from 1952
-publish: "true"
+publish: true
 ---
 # My Singer 201-2 from 1952
 

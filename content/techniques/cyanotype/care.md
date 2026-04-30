@@ -1,6 +1,6 @@
 ---
 title: Caring for cyanotypes
-publish: "true"
+publish: true
 ---
 # Caring for cyanotypes
 

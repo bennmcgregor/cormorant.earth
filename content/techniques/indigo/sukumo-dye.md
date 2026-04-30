@@ -1,6 +1,6 @@
 ---
 title: Sukumo dye
-publish: "true"
+publish: true
 ---
 # Sukumo dye
 

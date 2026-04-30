@@ -1,7 +1,7 @@
 ---
 title: Aikuma Senryo's kakishibu dye
-publish: 'true'
-map: 'true'
+publish: true
+map: true
 map_image: materials/aikuma-senryo/kakishibu-label.jpg
 map_x: -91
 map_y: -104

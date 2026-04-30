@@ -1,6 +1,6 @@
 ---
 title: Why record the materials I use?
-publish: "true"
+publish: true
 ---
 # Why record the materials I use?
 
