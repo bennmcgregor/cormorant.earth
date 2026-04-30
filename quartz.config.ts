@@ -28,9 +28,9 @@ const config: QuartzConfig = {
       fontOrigin: "local",
       cdnCaching: true,
       typography: {
-        header: "Futura PT",
-        body: "Futura PT",
-        code: "IBM Plex Mono",
+        header: "Jost",
+        body: "Jost",
+        code: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
       },
       colors: {
         lightMode: {
@@ -81,7 +81,6 @@ const config: QuartzConfig = {
         lazyLoad: true,
       }),
       Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
       RawFrontmatter(),
       WebpImageRewrite(),
     ],

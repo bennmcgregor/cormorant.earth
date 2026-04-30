@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { ReactFlow, Background } from "@xyflow/react"
 import type { FullSlug } from "../../util/path"
-import { MAP_MAX_ZOOM } from "../../util/imageSizes"
+import { MAP_MAX_ZOOM, MAP_TILE_DISPLAY_WIDTH } from "../../util/imageSizes"
 import {
     MapControls,
     MapNodeContent,
@@ -10,6 +10,8 @@ import {
     type MapNode,
     type MapNodeData,
 } from "./mapShared"
+
+const APPROX_TILE_HALF = MAP_TILE_DISPLAY_WIDTH / 2
 
 function CustomNode({ data }: { data: MapNodeData }) {
     return React.createElement(
@@ -20,6 +22,25 @@ function CustomNode({ data }: { data: MapNodeData }) {
 }
 
 const nodeTypes = { custom: CustomNode }
+
+function findCentermostTileId(items: MapDataItem[]): string | null {
+    if (items.length === 0) return null
+    let bestId = items[0].id
+    let bestDistSq = Infinity
+    for (const item of items) {
+        // Approximate tile center: position is the top-left corner; tiles
+        // render at ~MAP_TILE_DISPLAY_WIDTH on the shortest side, so adding
+        // half is close enough without computer per-tile aspect.
+        const cx = item.position.x + APPROX_TILE_HALF
+        const cy = item.position.y + APPROX_TILE_HALF
+        const distSq = cx * cx + cy * cy
+        if (distSq < bestDistSq) {
+            bestDistSq = distSq
+            bestId = item.id
+        }
+    }
+    return bestId
+}
 
 function MapApp() {
     const [nodes, setNodes] = useState<MapNode[]>([])
@@ -33,6 +54,7 @@ function MapApp() {
         fetch("/mapdata.json")
         .then((r) => r.json())
         .then((items: MapDataItem[]) => {
+            const lcpId = findCentermostTileId(items)
             setNodes(
             items.map((item) => ({
                 id: item.id,
@@ -45,6 +67,7 @@ function MapApp() {
                     href: item.href,
                     width: item.width,
                     height: item.height,
+                    eager: item.id == lcpId,
                 },
             })),
             )
