@@ -208,16 +208,33 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   }
 
   const enablePreview = searchLayout.dataset.preview === "true"
-  let preview: HTMLDivElement | undefined = undefined
   let previewInner: HTMLDivElement | undefined = undefined
-  const results = document.createElement("div")
-  results.className = "results-container"
-  appendLayout(results)
-
+  
+  // Reuse existing children if present. Quartz's SPA-nav diff (micromorph) may
+  // keep runtime-appended children alive across navigations; without this guard,
+  // each nav appends a fresh .results-container, producing visible duplicates.
+  let results: HTMLDivElement
+  const existingResults = searchLayout.querySelector<HTMLDivElement>(".results-container")
+  if (!existingResults) {
+      results = document.createElement("div")
+      results.className = "results-container"
+      appendLayout(results)
+  } else {
+      results = existingResults
+      removeAllChildren(results)
+  }
+  
+  let preview: HTMLDivElement | undefined = undefined
   if (enablePreview) {
-    preview = document.createElement("div")
-    preview.className = "preview-container"
-    appendLayout(preview)
+      const existing = searchLayout.querySelector<HTMLDivElement>(".preview-container")
+      if (existing) {
+          preview = existing
+          removeAllChildren(preview)
+      } else {
+          preview = document.createElement("div")
+          preview.className = "preview-container"
+          appendLayout(preview)
+      }
   }
 
   function hideSearch() {
@@ -230,14 +247,14 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     }
     searchLayout.classList.remove("display-results")
     searchType = "basic" // reset search type after closing
-    searchButton.focus()
+    searchButton.focus({ preventScroll: true })
   }
 
   function showSearch(searchTypeNew: SearchType) {
     searchType = searchTypeNew
     if (sidebar) sidebar.style.zIndex = "1"
     container.classList.add("active")
-    searchBar.focus()
+    searchBar.focus({ preventScroll: true })
   }
 
   let currentHover: HTMLInputElement | null = null

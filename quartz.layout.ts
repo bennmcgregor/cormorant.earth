@@ -4,28 +4,52 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [Component.TopNav(), Component.MapTopNav()],
+  header: [
+    Component.TopNav({
+      desktopLogo: "static/text-logo.png",
+      mobileLogo: "static/textless-logo.png",
+    }),
+    Component.MapTopNav({
+      desktopLogo: "static/text-logo.png",
+      mobileLogo: "static/textless-logo.png",
+    }),
+  ],
   afterBody: [],
   footer: Component.Footer(),
 }
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [],
+  beforeBody: [Component.BackButton()],
   left: [],
   right: [],
-  afterBody: [Component.TopNav(), Component.MapTopNav(), Component.MapCanvas(), Component.MapPreview()],
+  afterBody: [
+    Component.TopNav({
+      desktopLogo: "static/text-logo.png",
+      mobileLogo: "static/textless-logo.png",
+    }),
+    Component.MapTopNav({
+      desktopLogo: "static/text-logo.png",
+      mobileLogo: "static/textless-logo.png",
+    }),
+    Component.MapCanvas(),
+    Component.MapPreview()
+  ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Darkmode(),
-    Component.Explorer(),
-  ],
+  beforeBody: [Component.BackButton()],
+  left: [],
   right: [],
-  afterBody: [Component.TopNav(), Component.MapTopNav()],
+  afterBody: [
+    Component.TopNav({
+      desktopLogo: "static/text-logo.png",
+      mobileLogo: "static/textless-logo.png",
+    }),
+    Component.MapTopNav({
+      desktopLogo: "static/text-logo.png",
+      mobileLogo: "static/textless-logo.png",
+    }),
+  ],
 }

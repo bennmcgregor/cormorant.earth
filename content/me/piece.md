@@ -29,12 +29,12 @@ I learned that:
 One area of inquiry I did not get the chance to discuss in the video, but was an important part of my design process, was the goal to maximize shaping while minimizing waste in pattern cutting. I've been experimenting with zero-waste pattern cutting since my early days learning to sew and draft patterns. I was drawn to the black magic (or cleverness) of it—that you can turn a full piece of rectangular cloth into a garment that fits a torso, or legs, or a full body. However, this is much harder than it seems, with zero-waste clothes having a propensity for bagginess or inferior fit (according to a Western eye, at least). The pants (a nearly 100% zero-waste pattern) were an experiment in using folds and darts to add shaping, both for fit and style. Likewise, the bias-cut top, while not being as zero-waste as the pants (but still low waste for a bias cut garment, leveraging Liz Haywood's [bias tube technique](https://lizhaywood.com.au/thoughts-on-zero-waste-bias-cutting/)), was an experiment with another technique to add shaping by using the natural body-con properties of the bias cut. 
 TODO:  make a section about zero-waste pattern cutting and my explorations in it
 
-TODO: add photo of the zero-waste pants pattern in my notebook
+![[pants-pattern.jpeg]]
 ![[pants-cutting-pattern.png]]
 
 I also made a major, irreversible mistake whose effects only appeared once I had finished the video: I used far too high a concentration of iron to turn the kakishibu from orange to grey. I used around 5% WOF for both the silk top and cotton-linen pants, rather than the maximum recommended concentration of 2% (still quite high, honestly) for cellulose fibers, and even lower concentration for silk fibers (which should ideally not be exposed to iron at all). The iron weakened the fibers, with the pants wearing out extremely fast. I have had to mend them (crotch blowouts, split pant seams, holes) at least 4 times in their 5 months of life at the time of writing. I barely wear the top as I know it will tear with even minor stress, the silk having been significantly weakened.
 
-TODO: a photo of the latest torn back seam on the pants
+![[torn-back-seam.jpeg]]
 
 This project was also the first time I used my new (old) [[singer-201-2|Singer 201-2 sewing machine]] from 1952. I ordered it on eBay refurbished, but it had a timing issue. I did not know this when I sewed the pants, which contributed significantly to my frustrating during that process, and nearly all of the seams began to come undone within a few weeks of completion. I re-sewed the majority of stitching lines once the timing issue had been fixed. 
 

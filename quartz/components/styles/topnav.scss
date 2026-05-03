@@ -18,11 +18,28 @@ header {
     align-items: center;
     gap: 1.5rem;
 
-    & > .top-nav-logo img {
-      height: 2.5rem;
-      width: auto;
-      display: block;
-    }
+    & > .top-nav-logo {
+      display: flex;
+  
+      & img {
+          height: 2.5rem;
+          width: auto;
+      }
+  
+      & .logo-desktop {
+          display: block;
+          @media all and ($mobile) {
+              display: none;
+          }
+      }
+  
+      & .logo-mobile {
+          display: none;
+          @media all and ($mobile) {
+              display: block;
+          }
+      }
+    }  
 
     & > .search > .search-button {
       border: none;
