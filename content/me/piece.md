@@ -26,8 +26,7 @@ I learned that:
 ![[kakishibu-dyed-fabric.png]]
 ![[iron-kakishibu.jpeg]]
 
-One area of inquiry I did not get the chance to discuss in the video, but was an important part of my design process, was the goal to maximize shaping while minimizing waste in pattern cutting. I've been experimenting with zero-waste pattern cutting since my early days learning to sew and draft patterns. I was drawn to the black magic (or cleverness) of it—that you can turn a full piece of rectangular cloth into a garment that fits a torso, or legs, or a full body. However, this is much harder than it seems, with zero-waste clothes having a propensity for bagginess or inferior fit (according to a Western eye, at least). The pants (a nearly 100% zero-waste pattern) were an experiment in using folds and darts to add shaping, both for fit and style. Likewise, the bias-cut top, while not being as zero-waste as the pants (but still low waste for a bias cut garment, leveraging Liz Haywood's [bias tube technique](https://lizhaywood.com.au/thoughts-on-zero-waste-bias-cutting/)), was an experiment with another technique to add shaping by using the natural body-con properties of the bias cut. 
-TODO:  make a section about zero-waste pattern cutting and my explorations in it
+One area of inquiry I did not get the chance to discuss in the video, but was an important part of my design process, was the goal to maximize shaping while minimizing waste in pattern cutting. I've been experimenting with [[technique|zero-waste pattern cutting]] since my early days learning to sew and draft patterns. I was drawn to the black magic (or cleverness) of it—that you can turn a full piece of rectangular cloth into a garment that fits a torso, or legs, or a full body. However, this is much harder than it seems, with zero-waste clothes having a propensity for bagginess or inferior fit ([[technique#The history of zero-waste patternmaking|according to a Western eye, at least]]). The pants (a nearly 100% zero-waste pattern) were an experiment in using folds and darts to add shaping, both for fit and style. Likewise, the bias-cut top, while not being as zero-waste as the pants (but still low waste for a bias cut garment, leveraging Liz Haywood's [bias tube technique](https://lizhaywood.com.au/thoughts-on-zero-waste-bias-cutting/)), was an experiment with another technique to add shaping by using the natural body-con properties of the bias cut. 
 
 ![[pants-pattern.jpeg]]
 ![[pants-cutting-pattern.png]]
@@ -43,4 +42,4 @@ I love this set I made for myself. Given their significant defects, they are now
 
 ![[outfit-detail.png]]
 ![[me-in-outfit-room.png]]
-![[me-in-outfit-park.png]]
+![[my-outfit-frontpage.jpeg]]

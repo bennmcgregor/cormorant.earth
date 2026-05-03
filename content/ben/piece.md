@@ -2,7 +2,7 @@
 title: Outfit for Ben
 publish: true
 map: true
-map_image: ben/ben-full-outfit.jpg
+map_image: ben/jacket-front-detail-1.jpg
 map_x: 147
 map_y: 17
 map_z: 1

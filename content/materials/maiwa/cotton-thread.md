@@ -4,6 +4,6 @@ publish: true
 ---
 # Maiwa's cotton thread
 
-![[cotton-thread-image.png]]
+![[cotton-thread-image.png|eager]]
 
 https://maiwa.com/products/cotes-cotton-thread-single-spool-natural-white. Unbleached white mercerized cotton thread. Coats quality, made in India.

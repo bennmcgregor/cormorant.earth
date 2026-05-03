@@ -8,6 +8,7 @@ description: "Welcome! You're in the home of Cormorant, a research and design pr
 
 [ ![[jacket-back-detail.jpg|featured eager]]](ben/piece.md "Outfit for Ben")
 
+[ ![[my-outfit-frontpage.jpeg|featured]]](me/piece.md "Outfit for myself")
 # Where am I?
 
 Welcome! You're in the home of Cormorant, a research and design project that started with the question:
@@ -29,7 +30,7 @@ I also share videos about this stuff on social media. Follow me there for regula
 [youtube](https://youtube.com/@canarybenn)  
 
 
-[[map|Explore the map →]]
+# [[map|Explore the map →]]
 
 > [!map]
 
