@@ -9,7 +9,7 @@ publish: true
 
 ## June 2025 improvements
 
-For [[cormorant.earth/ben/piece|Ben's outfit]]. 
+For [[ben/piece|Ben's outfit]]. 
 
 I used the instructions from Annette Golaz's book, [Cyanotype Toning](https://www.agolaz.ch/about-1/publications/).
 

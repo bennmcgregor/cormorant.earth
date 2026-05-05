@@ -3,8 +3,8 @@ title: Outfit for Ben
 publish: true
 map: true
 map_image: ben/jacket-front-detail-1.jpg
-map_x: 147
-map_y: 17
+map_x: -48
+map_y: -210
 map_z: 1
 ---
 # Outfit for Ben

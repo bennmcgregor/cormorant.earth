@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
-# Convert a video to animated WebP, sized for the map.
-# Usage: ./to-animated-webp.sh input.mp4 [output.webp]
-#   ./to-animated-webp.sh clip.mp4               -> clip.webp
-#   ./to-animated-webp.sh clip.mp4 my-name.webp  -> my-name.webp
+# Compress a video to a small H.264 MP4 for web embedding and git storage.
+# Usage: ./to-animated-webp.sh input.mp4 [output.mp4]
+#   ./to-animated-webp.sh clip.mp4               -> clip-web.mp4
+#   ./to-animated-webp.sh clip.mp4 my-name.mp4   -> my-name.mp4
 #
-# Tweak MAX_WIDTH, QUALITY, FPS at the top to taste.
+# Tweak MAX_WIDTH, CRF, FPS at the top to taste.
+# CRF: 18=near-lossless, 28=good lossy, 34=aggressive — lower means larger file.
 
 set -euo pipefail
 
-MAX_WIDTH=600    # animated WebP gets expensive fast at higher widths
-QUALITY=70       # 0–100; 70 is a sane lossy default; drop to 50 for smaller files
-FPS=24           # cap output framerate (most phone video is 30 or 60)
+MAX_WIDTH=600
+CRF=28
+FPS=24
 
 if [ $# -lt 1 ]; then
-    echo "Usage: $0 <input-video> [output.webp]" >&2
+    echo "Usage: $0 <input-video> [output.mp4]" >&2
     exit 1
 fi
 
 input="$1"
-output="${2:-${input%.*}.webp}"
+output="${2:-${input%.*}-web.mp4}"
 
 if [ ! -f "$input" ]; then
     echo "Input not found: $input" >&2
@@ -26,15 +27,12 @@ if [ ! -f "$input" ]; then
 fi
 
 ffmpeg -y -i "$input" \
-    -vcodec libwebp \
-    -lossless 0 \
-    -compression_level 6 \
-    -q:v "$QUALITY" \
-    -loop 0 \
-    -preset picture \
+    -c:v libx264 \
+    -crf "$CRF" \
+    -preset slow \
     -an \
-    -vsync 0 \
     -vf "fps=${FPS},scale='min(${MAX_WIDTH},iw)':-2:flags=lanczos" \
+    -movflags +faststart \
     "$output"
 
 echo "Wrote $output ($(du -h "$output" | cut -f1))"

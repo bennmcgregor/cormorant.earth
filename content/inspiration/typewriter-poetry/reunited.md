@@ -1,8 +1,10 @@
 ---
-title: Typewriter poetry, reunited
+title: 'Typewriter poetry, reunited'
 publish: true
 map: true
 map_image: /inspiration/typewriter-poetry/toronto.jpeg
+map_x: 731
+map_y: -537
 ---
 # Typewriter poetry, reunited
 
