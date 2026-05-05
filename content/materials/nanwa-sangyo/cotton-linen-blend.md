@@ -4,7 +4,7 @@ publish: true
 ---
 # Nanwa Sangyo's cotton-linen blend
 
-![[cotton-linen-blend-label.png]]
+![[cotton-linen-blend-label.png|eager]]
 
 First purchased in January 2025. 
 

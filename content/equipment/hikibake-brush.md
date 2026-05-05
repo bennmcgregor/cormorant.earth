@@ -1,14 +1,10 @@
 ---
 title: Hikibake brush for hikizome
 publish: true
-map: true
-map_image: /equipment/hikibake-brushes.jpg
-map_x: -362
-map_y: -42
 ---
 # Hikibake brush for hikizome
 
-![[hikibake-brushes.jpg]]
+![[hikibake-brushes.jpg|eager]]
 
 Aikuma explains the art of hikizome on this page: https://aikuma-japan.com/blogs/the-history-of-japan-blue/what-is-and-how-to-do-hikizome?srsltid=AfmBOorwOK43bfCNMaZ1u0mjdhdTjh2LoB-L44-jUKCLb7pNlj6VDr6D.
 

@@ -4,7 +4,7 @@ publish: true
 ---
 # Sukumo dye
 
-I have not yet attempted this, but now I have to because I bought [[cormorant.earth/materials/aikuma-senryo/sukumo-dye|Aikuma Senryo's sukumo dye]].
+I have not yet attempted this, but now I have to because I bought [[materials/aikuma-senryo/sukumo-dye|Aikuma Senryo's sukumo dye]].
 
 ## Research notes
 

@@ -13,7 +13,20 @@ import {
 function CustomNode({ data }: { data: MapNodeData }) {
     return React.createElement(
         "a",
-        { className: "internal", href: data.href },
+        {
+            className: "internal",
+            href: data.href,
+            onClick: () => {
+                // Quartz's SPA nav doesn't reset scroll-y on forward navigation.
+                // The preview lives mid-page on the index, so without this, the
+                // destination inherits the index's scrolled-down position.
+                document.addEventListener(
+                    "nav",
+                    () => window.scrollTo({ top: 0, behavior: "instant" }),
+                    { once: true },
+                )
+            },
+        },
         React.createElement(MapNodeContent, { data }),
     )
 }

@@ -28,6 +28,7 @@ import MapPreview from "./MapPreview"
 import TopNav from "./TopNav"
 import MapTopNav from "./MapTopNav"
 import MapLink from "./MapLink"
+import BackButton from "./BackButton"
 
 export {
   ArticleTitle,
@@ -60,4 +61,5 @@ export {
   TopNav,
   MapTopNav,
   MapLink,
+  BackButton,
 }

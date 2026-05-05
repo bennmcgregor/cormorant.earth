@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Sync notes from a designated Obsidian vault folder into content/.
 
-Default behavior: every .md file under VAULT_PUBLISH_DIR is published. Notes
-whose frontmatter contains `publish: false` are excluded. Before copying,
+Default behavior: every .md file under VAULT_PUBLISH_DIR is published. Only
+notes whose frontmatter contains `publish: true` are included. Before copying,
 the script always prints the list of excluded notes; if any exist, it
 requires interactive confirmation to proceed (override with --yes).
 
 Attachments referenced from published notes (via ![[file]] or ![alt](path))
-are searched across the entire vault by basename and copied along. Deletes
-from content/ anything no longer in the published set.
+are searched across the entire vault by basename and copied along. Files 
+under {VAULT_PUBLISH_DIR}/statc/ are always copied, even when no note
+references them. Deletes from content/ anything no longer in the published
+set.
 
 Usage:
     ./publish.py            # interactive: prompts y/N if any notes are excluded
@@ -149,6 +151,27 @@ def warn_missing_eager(md_files: set[Path]) -> None:
             print(f"  - {md.relative_to(VAULT_PUBLISH_DIR)}")
         print("    Add |eager to the LCP image's wikilink alias to opt into eager-loading.")
 
+def collect_static_files() -> set[Path]:
+    """Always-include all non-markdown files under {VAULT_PUBLISH_DIR}/static/,
+    regardless of whether they’re referenced by a published note. Useful for
+    favicons, fonts, og-images, and any reusable static assets that may not
+    yet be linked from any note."""
+    static_dir = VAULT_PUBLISH_DIR / "static"
+    if not static_dir.is_dir():
+        return set()
+    found: set[Path] = set()
+    for p in static_dir.rglob("*"):
+        if not p.is_file():
+            continue
+        # Don’t force-include markdown files in static/ — they still need publish: true.
+        if p.suffix.lower() == ".md":
+            continue
+        rel = p.relative_to(VAULT_PUBLISH_DIR)
+        if is_hidden(rel):
+            continue
+        found.add(p)
+    return found
+
 def main() -> int:
     dry = "--dry-run" in sys.argv
     yes = "--yes" in sys.argv or "-y" in sys.argv
@@ -189,10 +212,11 @@ def main() -> int:
             return 1
 
     attachments = find_attachment_refs(published_md)
-    sources = published_md | attachments
+    static_files = collect_static_files()
+    sources = published_md | attachments | static_files
     desired_rel = {relpath_for_dest(p) for p in sources}
 
-    print(f"Publishing {len(published_md)} note(s) + {len(attachments)} attachment(s)")
+    print(f"Publishing {len(published_md)} note(s) + {len(attachments)} attachment(s) + {len(static_files)} static file(s)")
 
     for src in sources:
         rel = relpath_for_dest(src)
