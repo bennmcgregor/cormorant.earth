@@ -79,7 +79,9 @@ body[data-slug="index"] a:has(> img[alt~="featured"]) {
 }
 
 article img,
-.popover img {
+article video,
+.popover img,
+.popover video {
     max-width: 100%;
     height: auto;
 }

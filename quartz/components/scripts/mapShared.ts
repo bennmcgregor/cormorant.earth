@@ -1,10 +1,11 @@
-import React, { useState, type SyntheticEvent } from "react"
+import React, { useState, useEffect } from "react"
 import { Controls, ControlButton, useReactFlow, type Node } from "@xyflow/react"
 
 export type MapDataItem = {
     id: string
     position: { x: number; y: number, z: number, }
     image: string
+    video?: string
     width: number
     height: number
     title: string
@@ -13,6 +14,7 @@ export type MapDataItem = {
 
 export type MapNodeData = { 
     image: string
+    video?: string
     width: number
     height: number
     title: string
@@ -63,29 +65,64 @@ export function MapControls({ homeAction }: { homeAction: "reset-origin" | "fit-
  *  live site (wrapped in <a class="internal"> for popovers) and the editor
  *  (rendered bare). Wrapping is the consumer's responsibility. */
 export function MapNodeContent({ data }: { data: MapNodeData }) {
-    const [orientation, setOrientation] = useState<"portrait" | "landscape" | "square">("square")
+    const [showVideo, setShowVideo] = useState(false)
 
-    return React.createElement(
-        "div",
-        { className: "map-node" },
-        React.createElement("img", {
-            src: data.image,
-            alt: data.title,
+    useEffect(() => {
+        if (!data.video) return
+        const onReady = () => setShowVideo(true)
+        window.addEventListener("map-videos-ready", onReady, { once: true })
+        return () => window.removeEventListener("map-videos-ready", onReady)
+    }, [data.video])
+
+    // Pre-compute orientation from build-time dims so it's set on first paint,
+    // not after image onLoad.
+    const orientation =
+        data.width > data.height
+            ? "landscape"
+            : data.width < data.height
+                ? "portrait"
+                : "square"
+
+    var inner;
+    if (data.video && showVideo) {
+        inner = React.createElement("video", {
+            src: data.video,
+            poster: data.image,
+            muted: true,
+            autoPlay: true,
+            loop: true,
+            playsInline: true,
+            preload: "auto",
             width: data.width || undefined,
             height: data.height || undefined,
-            fetchPriority: data.eager ? "high" : undefined,
-            draggable: false,
             "data-orientation": orientation,
-            onLoad: (e: SyntheticEvent<HTMLImageElement>) => {
-                const img = e.currentTarget
-                setOrientation(
-                img.naturalWidth > img.naturalHeight
-                    ? "landscape"
-                    : img.naturalHeight > img.naturalWidth
-                    ? "portrait"
-                    : "square",
-                )
-            },
-        }),
-    )
+            "aria-label": data.title,
+            draggable: false,
+        })
+    } else {
+        if (/\.(mp4|webm|mov|m4v)$/i.test(data.image)) {
+            return React.createElement("video", {
+                src: data.image,
+                muted: true,
+                playsInline: true,
+                preload: "metadata",
+                width: data.width || undefined,
+                height: data.height || undefined,
+                "data-orientation": orientation,
+                draggable: false,
+            })
+        } else {
+            inner = React.createElement("img", {
+                src: data.image,
+                alt: data.title,
+                width: data.width || undefined,
+                height: data.height || undefined,
+                fetchPriority: data.eager ? "high" : undefined,
+                "data-orientation": orientation,
+                draggable: false,
+            })
+        }
+    }
+
+    return React.createElement("div", { className: "map-node" }, inner)
 }

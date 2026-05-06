@@ -10,17 +10,32 @@ import { QuartzPluginData } from "../vfile"
 import { imageSize } from "image-size"
 import { readFileSync } from "fs"
 import { MAP_TILE_MAX_WIDTH } from "../../util/imageSizes"
+import { execFileSync } from "child_process"
 
 type MapItem = {
     id: string
     position: { x: number; y: number; z: number }
     image: string
+    video?: string
     width: number
     height: number
     title: string
     href: string
 }
 
+const VIDEO_EXT_RE = /\.(mp4|webm|mov|m4v)$/i
+
+function isVideoPath(p: string): boolean {
+    return VIDEO_EXT_RE.test(p)
+}
+
+function videoPosterPath(p: string): string {
+    return p.replace(VIDEO_EXT_RE, ".map.poster.webp")
+}
+
+function videoCompressedPath(p: string): string {
+    return p.replace(VIDEO_EXT_RE, ".map.web.mp4")
+}
 
 function toMapWebp(url: string): string {
     if (/\.(jpe?g|png)$/i.test(url)) {
@@ -36,6 +51,32 @@ function computeMapTileDims(
 ): { width: number; height: number } {
     const fullPath = path.join(contentDir, mapImageRel)
     try {
+        if (VIDEO_EXT_RE.test(mapImageRel)) {
+            // Use ffprobe for video dimensions
+            const out = execFileSync(
+                "ffprobe",
+                [
+                    "-v", "error",
+                    "-select_streams", "v:0",
+                    "-show_entries", "stream=width,height",
+                    "-of", "csv=p=0:s=x",
+                    fullPath,
+                ],
+                { encoding: "utf-8" },
+            ).trim()
+            const [wStr, hStr] = out.split("x")
+            const width = parseInt(wStr, 10)
+            const height = parseInt(hStr, 10)
+            if (!width || !height) return { width: 0, height: 0 }
+            // Apply same MAP_TILE_MAX_WIDTH cap as images
+            if (width > MAP_TILE_MAX_WIDTH) {
+                return {
+                    width: MAP_TILE_MAX_WIDTH,
+                    height: Math.round((height * MAP_TILE_MAX_WIDTH) / width),
+                }
+            }
+            return { width, height }
+        }
         const { width, height } = imageSize(readFileSync(fullPath))
         if (!width || !height) return { width: 0, height: 0 }
         // Mirror the resize math used by imageOptimizer for the .map.webp variant.
@@ -130,6 +171,7 @@ async function* emitMapData(
         if (!image) continue
 
         const dims = computeMapTileDims(contentDir, image)
+        const isVideo = isVideoPath(image)
         items.push({
             id: slug,
             position: {
@@ -137,7 +179,8 @@ async function* emitMapData(
                 y: readIntField(fm, "map_y", slug),
                 z: readIntField(fm, "map_z", slug),
             },
-            image: toMapWebp("/" + image),
+            image: isVideo ? "/" + videoPosterPath(image) : toMapWebp("/" + image),
+            ...(isVideo && { video: "/" + videoCompressedPath(image) }),
             width: dims.width,
             height: dims.height,
             title: typeof fm.title === "string" ? fm.title : slug,

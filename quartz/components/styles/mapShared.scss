@@ -1,21 +1,26 @@
 @use "../../styles/variables.scss" as *;
 
-.map-node img {
+.map-node img,
+.map-node video {
     display: block;
     pointer-events: none;
     user-select: none;
     border-radius: 0;
-    /* Loading default — image is sized as a square while orientation isn't known yet */
     width: $mapTileDisplayWidth;
     height: $mapTileDisplayWidth;
+    object-fit: cover;
+    vertical-align: top;
+    margin: 0;
 }
 
-.map-node img[data-orientation="landscape"] {
+.map-node img[data-orientation="landscape"],
+.map-node video[data-orientation="landscape"] {
     height: $mapTileDisplayWidth;
     width: auto;
 }
 
-.map-node img[data-orientation="portrait"] {
+.map-node img[data-orientation="portrait"],
+.map-node video[data-orientation="portrait"] {
     width: $mapTileDisplayWidth;
     height: auto;
 }
