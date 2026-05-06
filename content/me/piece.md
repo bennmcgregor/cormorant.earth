@@ -12,8 +12,6 @@ Kakishibu-dyed tank top and pants set
 Top made from bias-cut [[mulberry-silk|handwoven plain-weave silk]], [[poh-pohs-thread|Poh Poh's black cotton thread]], [[materials/aikuma-senryo/kakishibu-dye|kakishibu dye]], [[ferrous-sulfate|ferrous sulfate solution]]  
 Pants made from [[cotton-linen-blend|plain-weave slub cotton-linen]], [[poh-pohs-thread|Poh Poh's black cotton thread]], [[materials/aikuma-senryo/kakishibu-dye|kakishibu dye]], dyeable zippers, [[ferrous-sulfate|ferrous sulfate solution]], kakishibu-dyed sashiko thread.
 
-![[my-outfit-preview.mp4]]
-
 ![making my last outfit...](https://www.youtube.com/watch?v=bCPBg8xhNzk)
 
 This was my first project under the Cormorant umbrella, and the video execution was more challenging than the actual creation of the clothes. There were so many concepts I tried to fit into the video, which uses the process of making "my last outfit" as a way to introduce the Cormorant project, taking the viewer on a journey across a whole range of ideas, techniques, and influences: [[dye|kakishibu dye]], the work of Edward Burtynsky, our collective contemporary alienation from the natural world and how things are made, Freda Huson's teaching of "going back to your roots," how rowing taught me to reconnect, the origins of the name "Cormorant," Elder Bill's teaching of the two-row wampum, zero-waste patterns, reversible garments, and low-waste bias cutting are just the concepts I could fit into the video!

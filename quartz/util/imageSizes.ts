@@ -14,7 +14,7 @@ export const DPR_TARGET = 2
 export const MAP_MAX_ZOOM = 2
 
 // Encoded width caps.
-export const CONTENT_MAX_WIDTH = 1200
+export const CONTENT_MAX_WIDTH = 800
 export const MAP_TILE_MAX_WIDTH =
     MAP_TILE_DISPLAY_WIDTH * MAP_MAX_ZOOM * DPR_TARGET // 600
 
