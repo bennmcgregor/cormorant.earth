@@ -5,9 +5,11 @@ import fs from "fs"
 import { imageSize } from "image-size"
 import { CONTENT_MAX_WIDTH } from "../../util/imageSizes"
 import { execFileSync } from "child_process"
+// @ts-ignore
+import ffprobeStatic from "ffprobe-static"
 
+const FFPROBE = ffprobeStatic.path
 const VIDEO_EXT_RE = /\.(mp4|webm|mov|m4v)$/i
-
 const dimsCache = new Map<string, { width: number; height: number } | null>()
 
 function getOutputDims(srcAbs: string, maxWidth: number) {
@@ -36,7 +38,7 @@ function getVideoOutputDims(srcAbs: string, maxWidth: number) {
     if (dimsCache.has(key)) return dimsCache.get(key)!
     let result: { width: number; height: number } | null = null
     try {
-        const out = execFileSync("ffprobe", [
+        const out = execFileSync(FFPROBE, [
             "-v", "error",
             "-select_streams", "v:0",
             "-show_entries", "stream=width,height",

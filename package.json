@@ -47,6 +47,8 @@
     "cli-spinner": "^0.2.10",
     "d3": "^7.9.0",
     "esbuild-sass-plugin": "^3.6.0",
+    "ffmpeg-static": "^5.3.0",
+    "ffprobe-static": "^3.1.0",
     "flexsearch": "^0.8.205",
     "github-slugger": "^2.0.0",
     "glob": "^13.0.6",

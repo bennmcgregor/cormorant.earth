@@ -134,11 +134,19 @@ Body images encode at `CONTENT_MAX_WIDTH = 1200`. Map tiles encode at `MAP_TILE_
 
 The constants live in `quartz/util/imageSizes.ts`. The matching SCSS variable lives in `quartz/styles/variables.scss`. Change one — change both.
 
-### Animated content
+### Videos
 
-For short looping clips (the "GIF replacement" use case), use animated WebP encoded ≤ 600 px wide. There's no automated pipeline yet — convert manually with ffmpeg before dropping into the vault. See `_local/cormorant-animated-webp.md` for the conversion script.
+Drop `.mp4` (or `.webm` / `.mov` / `.m4v`) files into the vault and embed with normal Obsidian wikilinks: `![[clip.mp4]]`. The build pipeline handles the rest:
 
-For longer or higher-motion clips, fall back to MP4-as-`<video muted autoplay loop playsinline>` and write the HTML directly in the markdown body.
+- **Compresses** each video to H.264 / CRF 28 / 24fps at the appropriate width (1200px for body, 600px additionally for map tiles). Output: `clip.web.mp4` and `clip.map.web.mp4`.
+- **Extracts a poster** (first frame) as WebP. Output: `clip.poster.webp` and `clip.map.poster.webp`.
+- **Rewrites** the rendered `<video>` to autoplay muted + loop + playsinline + show poster instantly + fetch video data in background.
+
+The `compress-mp4.sh` shell script in `tools/scripts/` is now redundant for build use (the pipeline handles it). Keep it for ad-hoc manual compression if useful.
+
+**Map tiles** use the smaller variant. The editor renders the first frame as a static still (no autoplay) so you can see what each tile is while positioning. The live `/map` page autoplays once the page is loaded.
+
+**Body videos** in note bodies render with the `<video>` element directly — no manual `<video>` HTML needed in markdown. Browser shows poster instantly, loads video metadata, autoplays muted on ready.
 
 ### `width="auto"` is fine in markdown
 
