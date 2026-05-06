@@ -5,6 +5,9 @@ import os from "os"
 import { fileURLToPath } from "url"
 import { spawn } from "child_process"
 import matter from "gray-matter"
+import { execFileSync } from "child_process"
+import { imageSize } from "image-size"
+import { readFileSync } from "fs"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = path.resolve(__dirname, "..", "..", "..")
@@ -16,9 +19,30 @@ const VAULT_PUBLISH_DIR = process.env.VAULT_PUBLISH_DIR ?? path.join(
 )
 const PUBLISH_SCRIPT = path.join(REPO_ROOT, "publish.py")
 const PORT = 3002
+const VIDEO_EXT_RE = /\.(mp4|webm|mov|m4v)$/i
 
 const app = express()
 app.use(express.json())
+
+function readDims(absPath) {
+    try {
+        if (VIDEO_EXT_RE.test(absPath)) {
+            const out = execFileSync("ffprobe", [
+                "-v", "error",
+                "-select_streams", "v:0",
+                "-show_entries", "stream=width,height",
+                "-of", "csv=p=0:s=x",
+                absPath,
+            ], { encoding: "utf-8" }).trim()
+            const [w, h] = out.split("x").map((v) => parseInt(v, 10))
+            return { width: w || 0, height: h || 0 }
+        }
+        const { width, height } = imageSize(readFileSync(absPath))
+        return { width: width || 0, height: height || 0 }
+    } catch {
+        return { width: 0, height: 0 }
+    }
+}
 
 app.get("/api/map", async (_req, res) => {
     try {
@@ -68,6 +92,8 @@ async function collectMapNotes() {
             .split(path.sep)
             .join("/")
         const resolvedImage = image.startsWith("/") ? image : "/" + image
+        const absImage = path.join(VAULT_PUBLISH_DIR, image.replace(/^\/+/, ""))
+        const dims = readDims(absImage)
         items.push({
             id: slug,
             position: {
@@ -76,6 +102,8 @@ async function collectMapNotes() {
                 z: Number(fm.map_z ?? 0),
             },
             image: resolvedImage,
+            width: dims.width,
+            height: dims.height,
             title: String(fm.title ?? slug),
             href: "/" + slug,
         })

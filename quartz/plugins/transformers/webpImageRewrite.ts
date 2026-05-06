@@ -4,6 +4,9 @@ import path from "path"
 import fs from "fs"
 import { imageSize } from "image-size"
 import { CONTENT_MAX_WIDTH } from "../../util/imageSizes"
+import { execFileSync } from "child_process"
+
+const VIDEO_EXT_RE = /\.(mp4|webm|mov|m4v)$/i
 
 const dimsCache = new Map<string, { width: number; height: number } | null>()
 
@@ -22,6 +25,29 @@ function getOutputDims(srcAbs: string, maxWidth: number) {
             } else {
                 result = { width, height }
             }
+        }
+    } catch {}
+    dimsCache.set(key, result)
+    return result
+}
+
+function getVideoOutputDims(srcAbs: string, maxWidth: number) {
+    const key = srcAbs + ":" + maxWidth
+    if (dimsCache.has(key)) return dimsCache.get(key)!
+    let result: { width: number; height: number } | null = null
+    try {
+        const out = execFileSync("ffprobe", [
+            "-v", "error",
+            "-select_streams", "v:0",
+            "-show_entries", "stream=width,height",
+            "-of", "csv=p=0:s=x",
+            srcAbs,
+        ], { encoding: "utf-8" }).trim()
+        const [w, h] = out.split("x").map((v) => parseInt(v, 10))
+        if (w && h) {
+            result = w > maxWidth
+                ? { width: maxWidth, height: Math.round((h * maxWidth) / w) }
+                : { width: w, height: h }
         }
     } catch {}
     dimsCache.set(key, result)
@@ -67,6 +93,33 @@ export const WebpImageRewrite: QuartzTransformerPlugin = () => ({
                 const slug = file?.data?.slug as string | undefined
 
                 visit(tree, "element", (node: any) => {
+                    if (node.tagName === "video") {
+                        const src = node.properties?.src
+                        if (typeof src !== "string") return
+                        if (src.startsWith("http://") || src.startsWith("https://")) return
+                        if (!VIDEO_EXT_RE.test(src)) return
+
+                        const srcAbs = resolveSrcAbs(contentDir, src, slug)
+                        if (srcAbs) {
+                            const dims = getVideoOutputDims(srcAbs, CONTENT_MAX_WIDTH)
+                            if (dims) {
+                                node.properties.width = dims.width
+                                node.properties.height = dims.height
+                            }
+                        }
+
+                        const base = src.replace(VIDEO_EXT_RE, "")
+                        node.properties.src = base + ".web.mp4"
+                        node.properties.poster = base + ".poster.webp"
+                        node.properties.muted = true
+                        node.properties.autoplay = true
+                        node.properties.loop = true
+                        node.properties.playsinline = true
+                        node.properties.preload = "metadata"
+                        delete node.properties.controls
+                        return
+                    }
+
                     if (node.tagName !== "img") return
                     const origSrc = node.properties?.src
                     if (typeof origSrc !== "string") return

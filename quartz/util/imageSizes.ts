@@ -19,3 +19,8 @@ export const MAP_TILE_MAX_WIDTH =
     MAP_TILE_DISPLAY_WIDTH * MAP_MAX_ZOOM * DPR_TARGET // 600
 
 export const WEBP_QUALITY = 85
+
+// Video compression settings — applied to map_image videos at build time.
+// Changes auto-bust the cache.
+export const VIDEO_CRF = 28      // 18=near-lossless, 28=good lossy, 34=aggressive
+export const VIDEO_FPS = 24

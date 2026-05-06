@@ -2,9 +2,9 @@
 title: Outfit for myself
 publish: true
 map: true
-map_image: /me/outfit-detail.png
-map_x: -275
-map_y: -94
+map_image: /me/my-outfit-preview.mp4
+map_x: -213
+map_y: -121
 ---
 # Outfit for myself
 *August—November 2025*  
@@ -12,7 +12,7 @@ Kakishibu-dyed tank top and pants set
 Top made from bias-cut [[mulberry-silk|handwoven plain-weave silk]], [[poh-pohs-thread|Poh Poh's black cotton thread]], [[materials/aikuma-senryo/kakishibu-dye|kakishibu dye]], [[ferrous-sulfate|ferrous sulfate solution]]  
 Pants made from [[cotton-linen-blend|plain-weave slub cotton-linen]], [[poh-pohs-thread|Poh Poh's black cotton thread]], [[materials/aikuma-senryo/kakishibu-dye|kakishibu dye]], dyeable zippers, [[ferrous-sulfate|ferrous sulfate solution]], kakishibu-dyed sashiko thread.
 
-TODO: add video preview for map
+![[my-outfit-preview.mp4]]
 
 ![making my last outfit...](https://www.youtube.com/watch?v=bCPBg8xhNzk)
 

@@ -63,6 +63,7 @@ function MapApp() {
                 zIndex: item.position.z,
                 data: { 
                     image: item.image,
+                    video: item.video,
                     title: item.title,
                     href: item.href,
                     width: item.width,
@@ -72,6 +73,20 @@ function MapApp() {
             })),
             )
         })
+    }, [])
+
+    useEffect(() => {
+        const trigger = () => {
+            // 500ms delay after load to let any post-load layout settle.
+            setTimeout(() => {
+                window.dispatchEvent(new CustomEvent("map-videos-ready"))
+            }, 500)
+        }
+        if (document.readyState === "complete") {
+            trigger()
+        } else {
+            window.addEventListener("load", trigger, { once: true })
+        }
     }, [])
 
     return React.createElement(
