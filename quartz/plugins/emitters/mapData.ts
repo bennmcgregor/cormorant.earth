@@ -11,6 +11,10 @@ import { imageSize } from "image-size"
 import { readFileSync } from "fs"
 import { MAP_TILE_MAX_WIDTH } from "../../util/imageSizes"
 import { execFileSync } from "child_process"
+// @ts-ignore
+import ffprobeStatic from "ffprobe-static"
+
+const FFPROBE = ffprobeStatic.path
 
 type MapItem = {
     id: string
@@ -54,7 +58,7 @@ function computeMapTileDims(
         if (VIDEO_EXT_RE.test(mapImageRel)) {
             // Use ffprobe for video dimensions
             const out = execFileSync(
-                "ffprobe",
+                FFPROBE,
                 [
                     "-v", "error",
                     "-select_streams", "v:0",

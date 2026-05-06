@@ -11,11 +11,14 @@ import {
     VIDEO_FPS,
 } from "../../util/imageSizes"
 import { execFileSync } from "child_process"
+import ffmpegPath from "ffmpeg-static"
 
 const VIDEO_EXTS = [".mp4", ".webm", ".mov", ".m4v"]
 
 const CONVERTABLE_EXTS = [".jpg", ".jpeg", ".png"]
 const CACHE_DIR = path.join(process.cwd(), ".cache/image-optimizer")
+
+const FFMPEG = ffmpegPath as string
 
 async function walk(dir: string): Promise<string[]> {
     const out: string[] = []
@@ -76,7 +79,7 @@ async function compressVideoIfStale(
     await fs.mkdir(path.dirname(cachePath), { recursive: true })
     try {
         execFileSync(
-            "ffmpeg",
+            FFMPEG,
             [
                 "-y",
                 "-i", src,
@@ -118,7 +121,7 @@ async function extractPosterIfStale(
     let pngBuffer: Buffer
     try {
         pngBuffer = execFileSync(
-            "ffmpeg",
+            FFMPEG,
             [
                 "-y",
                 "-i", src,

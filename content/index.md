@@ -17,9 +17,6 @@ _How do we stop overconsumption?_
 
 I love clothes, so I'm using them as a case study. The fashion industry is notoriously hard on the environment. Yet clothes are the source of so much joy and meaning-making. I keep finding myself inspired by new ideas, people in my life, beautiful things, places. And clothes are one of the ways I want to express these sparks of inspiration. Clothes also help me understand myself—as I change, the clothes I wear change with me.
 
-TODO: remove
-- Cathy: it's like a toxic relationship. You love it, but it also hurts you and everyone around you. And it's very emotional—you tell people they need to change their relationship with clothes, and they get defensive. It's cause you feel guilt, and you want to do something about it, but then there's not much you can do about it. "but I don't have money" "but these clothes make me happy" "but these clothes make me feel good about myself"
-
 A while ago, I started having trouble finding clothes I liked in stores. So I started making my own. It began with sashiko embroidery and turned into full-on sewing, patternmaking, and fabric dyeing. And as I dove deeper into these crafts—many of which I had never considered as I shopped for clothes—I realized that overconsumption is a symptom of our disconnect from ourselves and the origins of our stuff. So Cormorant's true guiding question is really:
 
 *How can we heal our relationship with ourselves and the natural world?*
