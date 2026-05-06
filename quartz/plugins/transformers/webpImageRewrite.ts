@@ -117,6 +117,8 @@ export const WebpImageRewrite: QuartzTransformerPlugin = () => ({
                         node.properties.playsinline = true
                         node.properties.preload = "metadata"
                         delete node.properties.controls
+
+                        // no fetchpriority: high for video tags. slightly less optimal loading speed.
                         return
                     }
 
