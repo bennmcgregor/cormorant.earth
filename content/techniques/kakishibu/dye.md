@@ -1,10 +1,11 @@
 ---
 title: Kakishibu dye
 publish: true
-map: false
-map_image:
+map: true
+map_image: /techniques/kakishibu/kakishibu-on-roof.mp4
+map_x: -551
+map_y: -595
 ---
-TODO: add to map, and use a video of the fabric fluttering in the wind on the roof
 # Kakishibu dye
 
 ![[kakishibu-dyed-fabric.png|eager]]
