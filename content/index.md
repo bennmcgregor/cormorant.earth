@@ -34,7 +34,6 @@ I also share videos about this stuff on social media. Follow me there for regula
 
 > [!map]
 
-
 # About Me
 
 I'm Benn. I love designing and making things. Connect with me! Let's create together.
