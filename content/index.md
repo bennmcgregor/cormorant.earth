@@ -39,3 +39,7 @@ I also share videos about this stuff on social media. Follow me there for regula
 I'm Benn. I love designing and making things. Connect with me! Let's create together.
 
 hello@cormorant.earth
+
+## Disclaimer
+
+This is not a business, and I don't take commissions. It is something that I do on the side in my free time, purely for my own interest.
