@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { ReactFlow, Background } from "@xyflow/react"
 import type { FullSlug } from "../../util/path"
@@ -12,6 +12,7 @@ import {
 } from "./mapShared"
 
 const APPROX_TILE_HALF = MAP_TILE_DISPLAY_WIDTH / 2
+const VIEWPORT_KEY = "map-viewport"
 
 function CustomNode({ data }: { data: MapNodeData }) {
     return React.createElement(
@@ -44,11 +45,13 @@ function findCentermostTileId(items: MapDataItem[]): string | null {
 
 function MapApp() {
     const [nodes, setNodes] = useState<MapNode[]>([])
-    const [defaultViewport] = useState(() => ({
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2,
-        zoom: 1,
-    }))
+    const [defaultViewport] = useState(() => {
+        try {
+            const saved = sessionStorage.getItem(VIEWPORT_KEY)
+            if (saved) return JSON.parse(saved)
+        } catch {}
+        return { x: window.innerWidth / 2, y: window.innerHeight / 2, zoom: 1 }
+    })
 
     useEffect(() => {
         fetch("/mapdata.json")
@@ -89,6 +92,10 @@ function MapApp() {
         }
     }, [])
 
+    const saveViewport = useCallback((_: unknown, vp: { x: number; y: number; zoom: number }) => {
+        try { sessionStorage.setItem(VIEWPORT_KEY, JSON.stringify(vp)) } catch {}
+    }, [])
+
     return React.createElement(
         ReactFlow,
         {
@@ -99,6 +106,7 @@ function MapApp() {
             defaultViewport,
             proOptions: { hideAttribution: true },
             maxZoom: MAP_MAX_ZOOM,
+            onMoveEnd: saveViewport,
         },
         React.createElement(Background, null),
         React.createElement(MapControls, { homeAction: "reset-origin" }),

@@ -143,6 +143,7 @@ const tagRegex = new RegExp(
 const blockReferenceRegex = new RegExp(/\^([-_A-Za-z0-9]+)$/g)
 const ytLinkRegex = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
 const ytPlaylistLinkRegex = /[?&]list=([^#?&]*)/
+const ytTimestampRegex = /[?&]t=(\d+)/
 const videoExtensionRegex = new RegExp(/\.(mp4|webm|ogg|avi|mov|flv|wmv|mkv|mpg|mpeg|3gp|m4v)$/)
 const wikilinkImageEmbedRegex = new RegExp(
   /^(?<alt>(?!^\d*x?\d*$).*?)?(\|?\s*?(?<width>\d+)(x(?<height>\d+))?)?$/,
@@ -627,17 +628,20 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                 const match = node.properties.src.match(ytLinkRegex)
                 const videoId = match && match[2].length == 11 ? match[2] : null
                 const playlistId = node.properties.src.match(ytPlaylistLinkRegex)?.[1]
+                const timestamp = node.properties.src.match(ytTimestampRegex)?.[1]
                 if (videoId) {
                   // YouTube video (with optional playlist)
                   node.tagName = "iframe"
+                  const params = new URLSearchParams()
+                  if (playlistId) params.set("list", playlistId)
+                  if (timestamp) params.set("start", timestamp)
+                  const query = params.toString()
                   node.properties = {
                     class: "external-embed youtube",
                     allow: "fullscreen",
                     frameborder: 0,
                     width: "600px",
-                    src: playlistId
-                      ? `https://www.youtube.com/embed/${videoId}?list=${playlistId}`
-                      : `https://www.youtube.com/embed/${videoId}`,
+                    src: `https://www.youtube.com/embed/${videoId}${query ? `?${query}` : ""}`,
                   }
                 } else if (playlistId) {
                   // YouTube playlist only.
