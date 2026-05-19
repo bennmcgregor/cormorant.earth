@@ -28,7 +28,7 @@ _Buying [[kakishibu-dye|kakishibu dye]] in Tokyo at Aikuma Senryo_
 
 Unlike most other dyes, kakishibu gets darker the more it is exposed to light. You get the deep orange colour by dipping fabric in the dye solution, letting it dry and develop in the sunlight, and repeating this process.
 
-You can shift the tone of kakishibu by dipping the dyed fabric in an alkaline solution (I usually use washing soda), which yields a brown colour on sun-exposed kakishibu, or an iron solution, which yields a green-grey on sun-exposed kakishibu, and purple-grey on non-exposed kakishibu.
+You can shift the tone of kakishibu by dipping the dyed fabric in an alkaline solution (I usually use [[washing-soda|washing soda]]), which yields a brown colour on sun-exposed kakishibu, or an iron solution, which yields a green-grey on sun-exposed kakishibu, and purple-grey on non-exposed kakishibu.
 
 ![[fabric-on-roof.png]]
 _Kakishibu-dyed fabric developing on the roof of my old apartment_
