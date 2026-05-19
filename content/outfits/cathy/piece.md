@@ -3,15 +3,15 @@ title: Outfit for Cathy
 publish: true
 map: true
 map_image: /outfits/cathy/cathy-jacket-portrait.jpeg
-map_x: -21
-map_y: -12
+map_x: -23
+map_y: -5
 ---
 # Outfit for Cathy
 *August 2025—March 2026*  
-[[dye|Kakishibu]]-dyed fall jacket with [[cormorant.earth/techniques/eco-printing/technique|eco-printed]] lining.
-The shell and facings are made from midweight [[cotton-canvas|cotton canvas]], [[kakishibu-dye|kakishibu]], [[washing-soda|washing soda]], dyeable zippers, brown Gütermann cotton thread. 
-The lining is made from lightweight [[plainweave-cotton-hemp|plain-weave blended cotton-hemp]], [[cotton-thread|unbleached cotton thread]], brown cotton thread, fallen maple and oak leaves of various species, [[aluminum-acetate|aluminum acetate solution]].
-The tags are made from lightweight plain-weave blended cotton-hemp and [[cyanotype-ingredients|cyanotype dye]].
+[[dye|Kakishibu]]-dyed fall jacket with [[cormorant.earth/techniques/eco-printing/technique|eco-printed]] lining.  
+The shell and facings are made from midweight [[cotton-canvas|cotton canvas]], [[kakishibu-dye|kakishibu]], [[washing-soda|washing soda]], dyeable zippers, brown Gütermann cotton thread.  
+The lining is made from lightweight [[plainweave-cotton-hemp|plain-weave blended cotton-hemp]], [[cotton-thread|unbleached cotton thread]], brown cotton thread, fallen maple and oak leaves of various species, [[aluminum-acetate|aluminum acetate solution]].  
+The tags are made from lightweight plain-weave blended cotton-hemp and [[cyanotype-ingredients|cyanotype dye]].  
 
 TODO: link youtube video
 

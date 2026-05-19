@@ -4,7 +4,7 @@ publish: true
 map: true
 map_image: equipment/singer-201-2/singer.jpg
 map_x: -10
-map_y: 306
+map_y: 369
 ---
 # My Singer 201-2 from 1952
 

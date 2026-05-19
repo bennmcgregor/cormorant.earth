@@ -3,8 +3,8 @@ title: Eco-printing
 publish: true
 map: true
 map_image: /outfits/cathy/eco-printed-lining.jpg
-map_x: -447
-map_y: -759
+map_x: -465
+map_y: -763
 ---
 # Eco-printing
 
