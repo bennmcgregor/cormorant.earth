@@ -13,7 +13,7 @@ The shell and facings are made from midweight [[cotton-canvas|cotton canvas]], [
 The lining is made from lightweight [[plainweave-cotton-hemp|plain-weave blended cotton-hemp]], [[cotton-thread|unbleached cotton thread]], brown cotton thread, fallen maple and oak leaves of various species, [[aluminum-acetate|aluminum acetate solution]].  
 The tags are made from lightweight plain-weave blended cotton-hemp and [[cyanotype-ingredients|cyanotype dye]].  
 
-TODO: link youtube video
+![We took "fall city jacket" too seriously](https://youtu.be/NCSSgFc-lwg)
 
 I had a lot of fun making this jacket with bestie Cathy! I learned how to [[techniques/eco-printing/technique|eco-print]] to fulfill the vision of a lining printed with leaves. And it honestly turned out even better than I expected. The canvas shell also had a stunning texture thanks to the kakishibu that it was painstakingly dyed with. It looks like leather! 
 
