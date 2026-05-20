@@ -13,5 +13,5 @@ Typewriter poet guy offering poems on the spot during a visit to NYC with friend
 Here's ours, from Toronto: 
 ![[toronto.jpeg|eager]]
 
-And our friends', [[cormorant.earth/inspiration/dianas-house/reflection|in Vancouver]]: 
+And our friends', [[inspiration/dianas-house/reflection|in Vancouver]]: 
 ![[vancouver.jpeg]]

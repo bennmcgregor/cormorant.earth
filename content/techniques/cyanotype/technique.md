@@ -13,7 +13,7 @@ map_y: -517
 Cyanotype is an early photographic process. It involves painting a light-sensitive mixture of chemicals (called the *sensitizer*) onto paper or fabric composed of natural fibers, and exposing it to the sun through a negative. After washing in water, this gives a beautiful blue photographic print. The pigment is called [Prussian Blue](https://en.wikipedia.org/wiki/Prussian_blue). 
 
 ![[jacket-printing-in-progress.jpeg]]
-_[[ben/piece|Ben's Jacket]] partially-printed with sensitizer ready to expose_  
+_[[outfits/ben/piece|Ben's Jacket]] partially-printed with sensitizer ready to expose_  
   
 ![[bandana-post-exposure.png]]
 _A bandana printed with cyanotype, after exposure but before washing_  
