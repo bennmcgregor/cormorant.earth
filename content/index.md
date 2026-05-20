@@ -6,9 +6,11 @@ description: "Welcome! You're in the home of Cormorant, a research and design pr
 ![[text-logo.png|eager]]
 
 
-[ ![[jacket-back-detail.jpg|featured eager]]](ben/piece.md "Outfit for Ben")
+[ ![[cathy-jacket-coffee.jpg|featured eager]]](outfits/cathy/piece.md "Outfit for Cathy")
 
-[ ![[my-outfit-frontpage.jpeg|featured]]](me/piece.md "Outfit for myself")
+[ ![[jacket-back-detail.jpg|featured eager]]](outfits/ben/piece.md "Outfit for Ben")
+
+[ ![[my-outfit-frontpage.jpeg|featured]]](outfits/me/piece.md "Outfit for myself")
 # Where am I?
 
 Welcome! You're in the home of Cormorant, a research and design project that started with the question:
@@ -39,3 +41,7 @@ I also share videos about this stuff on social media. Follow me there for regula
 I'm Benn. I love designing and making things. Connect with me! Let's create together.
 
 hello@cormorant.earth
+
+## Disclaimer
+
+This is not a business, and I don't take commissions. It is something that I do on the side in my free time, purely for my own interest.

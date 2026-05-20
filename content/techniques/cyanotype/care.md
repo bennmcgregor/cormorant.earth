@@ -10,7 +10,7 @@ I often get asked about how to care for cyanotypes. Generally, people are worrie
 
 Hand wash cold by itself with a splash of white vinegar. Ensure the detergent is phosphate-free. I use my regular detergent, I just made sure to read the ingredients before I washed cyanotype the first time. Even better is if you use pH neutral detergent. Air dry out of the sun. Store in a dark place (like your closet).
 
-Obviously, don't use bleach! Less obviously, **do not** use washing soda. Ideally, just avoid all additives! There are likely others that will bleach your prints permanently. 
+Obviously, don't use bleach! Less obviously, **do not** use [[washing-soda|washing soda]]. Ideally, just avoid all additives! There are likely others that will bleach your prints permanently. 
 
 ## Fading
 

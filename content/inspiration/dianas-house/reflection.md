@@ -3,8 +3,8 @@ title: Diana's House
 publish: true
 map: true
 map_image: /inspiration/dianas-house/dianas-living-room.mp4
-map_x: -638
-map_y: 114
+map_x: -748
+map_y: 124
 ---
 # Diana's House
 

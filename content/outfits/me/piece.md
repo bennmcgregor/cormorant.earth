@@ -2,7 +2,7 @@
 title: Outfit for myself
 publish: true
 map: true
-map_image: /me/my-outfit-preview.mp4
+map_image: outfits/me/my-outfit-preview.mp4
 map_x: -213
 map_y: -121
 ---
