@@ -2,7 +2,7 @@
 title: Zero-waste pattern cutting
 publish: true
 map: true
-map_image: /me/pants-cutting-pattern.png
+map_image: outfits/me/pants-cutting-pattern.png
 map_x: -1044
 map_y: -438
 ---
