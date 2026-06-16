@@ -4,7 +4,7 @@ publish: true
 map: true
 map_image: /inspiration/typewriter-poetry/toronto.jpeg
 map_x: 862
-map_y: -653
+map_y: -665
 ---
 # Typewriter poetry, reunited
 

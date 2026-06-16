@@ -8,6 +8,8 @@ description: "Welcome! You're in the home of Cormorant, a research and design pr
 
 [ ![[cathy-jacket-coffee.jpg|featured eager]]](outfits/cathy/piece.md "Outfit for Cathy")
 
+[ ![[cathy-jacket-coffee.jpg|featured eager]]](outfits/cathy/piece.md "Outfit for Cathy")
+
 [ ![[jacket-back-detail.jpg|featured eager]]](outfits/ben/piece.md "Outfit for Ben")
 
 [ ![[my-outfit-frontpage.jpeg|featured]]](outfits/me/piece.md "Outfit for myself")
