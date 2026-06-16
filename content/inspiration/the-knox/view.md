@@ -3,8 +3,8 @@ title: The view from my old room
 publish: true
 map: true
 map_image: /inspiration/the-knox/chrysler-in-mist.jpeg
-map_x: 1020
-map_y: -506
+map_x: 1044
+map_y: -548
 ---
 # The view from my old room
 
