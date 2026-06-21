@@ -6,7 +6,7 @@ map_image: /inspiration/bjork/cornucopia-poster.jpg
 map_x: 1229
 map_y: -996
 ---
-Some lines from Bjork's Cornucopia film that stuck with me.
+Some lines from Bjork's [Cornucopia film](https://bjorkcornucopia.com/) that stuck with me.
 
 - hold fort for love forever
 - the past is on loop turn it off

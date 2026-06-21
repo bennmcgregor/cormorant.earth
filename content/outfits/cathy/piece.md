@@ -3,8 +3,8 @@ title: Outfit for Cathy
 publish: true
 map: true
 map_image: /outfits/cathy/cathy-jacket-portrait.jpeg
-map_x: -35
-map_y: 7
+map_x: -32
+map_y: 9
 ---
 # Outfit for Cathy
 *August 2025—March 2026*  

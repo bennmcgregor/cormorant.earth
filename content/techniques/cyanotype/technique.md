@@ -24,8 +24,8 @@ This technique was my gateway to [[techniques/natural-dye/technique|many]] [[dye
 
 ## Learn more
 
-[My video on the process](https://www.youtube.com/shorts/g63kFAg6YmM)
-[[dye-journal|Dye journal]]
+[My video on the process](https://www.youtube.com/shorts/g63kFAg6YmM)  
+[[dye-journal|Dye journal]]  
 [[care|Caring for cyanotypes]]  
 [[cyanotype-ingredients|Where I buy cyanotype dye]]  
 
