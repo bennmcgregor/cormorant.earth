@@ -17,7 +17,7 @@ Exposure time: 90 minutes.
 Darkest first step: still step 1. I've been underexposing my prints!
 
 Exposure time: 6 hours.
-Darkest first step: 
+Darkest first step: still step 1. Time to just expose for 1h again...
 ### Curving the negative for optimal tonal range
 
 I've been using the Golaz curve (see below) to curve my negatives, which has worked well enough. However, it's likely that the optimal curve for my setup looks slightly different. I found instructions on how to experimentally determine the right curve from Jonah Calinawan's blog: https://jonahcalinawan.com/blog/cyanotype-digital-negative/. 
@@ -25,6 +25,14 @@ I've been using the Golaz curve (see below) to curve my negatives, which has wor
 ChartThrob: https://github.com/joker-b/ChartThrob/.
 
 Still deciding whether to do this. It's a lot of work, and I need to get photoshop. Maybe I should get Claude to port it over to GIMP... 
+
+### Image format's impact on the final print?
+
+![[trees-first-round.jpg]]
+
+The first pass of prints used varying image file formats for the negatives (.jpeg and .png). Did that have an effect on the final print? I researched further and discovered that TIFF is definitely the best photo file format for printing. I will use TIFF file format going forwards.
+
+
 ## June 2025 improvements
 
 For [[outfits/ben/piece|Ben's outfit]]. 
@@ -37,7 +45,7 @@ I used the instructions from Annette Golaz's book, [Cyanotype Toning](https://ww
 - Used distilled water to create the sensitizer solutions
 - Used the [[tp-4-5-31-step-wedge|Stouffer TP4X5-31 Step Wedge]] to determine exposure time
 - Scoured the fabric before printing (make sure to neutralize all alkalinity for cellulose!)
-- Used the Golaz curve after making images black + white and inverting. 
+- Used the Anderson/Golaz curves after making images black + white and inverting. (Golaz for the window, Anderson for everything else)
 - Bought an inkjet printer and printed my own negatives. Photo Matte/Presentation Matte mode with high quality. Make sure to tape a piece of printer paper behind the transparency paper so the printer can print properly
 
 #### Golaz Curve
