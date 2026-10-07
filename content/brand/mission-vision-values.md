@@ -16,16 +16,16 @@ Everyone on the planet wears their authentic style.
 
 # Values
 
-We express our authentic selves.
-We are not afraid to be different.
-Imperfection is beauty.
+We express our authentic selves.  
+We are not afraid to be different.  
+Imperfection is beauty.  
 
-We honour where we come from.
-We are inspiring our friends to live in harmony with all life.
-We do the right thing for our future generations.
+We honour where we come from.  
+We are inspiring our friends to live in harmony with all life.  
+We do the right thing for our future generations.  
 We are part of the circle of life.
 
-Working with our hands is the path forwards.
+Working with our hands is the path forwards.a
 
 
 ## The original form of these ideas

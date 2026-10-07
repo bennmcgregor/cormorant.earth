@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//cormorant.earth//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:premiere-2026@cormorant.earth
+SEQUENCE:0
+DTSTAMP:20261005T044754Z
+DTSTART:20261017T003000Z
+DTEND:20261017T010000Z
+SUMMARY:World Premiere: “Can I still find my creative spark?”
+LOCATION:https://cormorant.earth/events/premiere
+URL:https://cormorant.earth/events/premiere
+DESCRIPTION:Return to https://cormorant.earth/events/premiere at 8:30pm
+  ET to watch the livestream.
+END:VEVENT
+END:VCALENDAR
