@@ -5,6 +5,7 @@ description: "Welcome! You're in the home of Cormorant, a research and design pr
 ---
 ![[text-logo.png|eager]]
 
+[ ![[thumbnail.jpg|featured eager]]](events/premiere.md "can i still find my creative spark?")
 
 [ ![[cathy-jacket-coffee.jpg|featured eager]]](outfits/cathy/piece.md "Outfit for Cathy")
 
